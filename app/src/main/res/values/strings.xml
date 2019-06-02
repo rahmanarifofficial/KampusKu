@@ -1,11 +1,14 @@
 <resources>
-    <string name="app_name">Kampus Ku</string>
-    <string name="menu_kampus_ku">Kampus Ku</string>
-    <string name="menu_tren">Tren</string>
-    <string name="menu_beasiswa">Beasiswa</string>
-    <string name="menu_sbmptn">SBMPTN</string>
-    <string name="menu_akun">Akun</string>
+  <string name="app_name">Kampus Ku</string>
+  <string name="menu_kampus_ku">Kampus Ku</string>
+  <string name="menu_tren">Tren</string>
+  <string name="menu_beasiswa">Beasiswa</string>
+  <string name="menu_sbmptn">SBMPTN</string>
+  <string name="menu_akun">Akun</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="ptn_text">Nama PTN</string>
+  <string name="web_ptn_text">Website PMB PTN</string>
+  <string name="akreditasi_ptn_text">Akreditasi</string>
 </resources>
