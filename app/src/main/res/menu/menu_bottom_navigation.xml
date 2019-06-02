@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/kampus_menu"
+            android:title="@string/menu_kampus_ku"
+            android:icon="@drawable/ic_university_campus"/>
+    <item
+            android:id="@+id/tren_menu"
+            android:title="@string/menu_tren"
+            android:icon="@drawable/ic_trend"/>
+    <item
+            android:id="@+id/beasiswa_menu"
+            android:title="@string/menu_beasiswa"
+            android:icon="@drawable/ic_scholarship"/>
+    <item
+            android:id="@+id/sbmptn_menu"
+            android:title="@string/menu_sbmptn"
+            android:icon="@drawable/ic_sbmptn"/>
+    <item
+            android:id="@+id/akun_menu"
+            android:title="@string/menu_akun"
+            android:icon="@drawable/ic_user_avatar"/>
+</menu>
