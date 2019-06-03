@@ -46,7 +46,9 @@ class KampusFragment : Fragment(), PtnView {
         }
         list_ptn.layoutManager = LinearLayoutManager(activity)
         list_ptn.adapter = adapter
-//        loadPTN()
+        swiperefresh_ptn.onRefresh {
+            PtnPresenter.getListPTN(this)
+        }
     }
 
     override fun showLoading() {
@@ -62,29 +64,10 @@ class KampusFragment : Fragment(), PtnView {
         ptnList.clear()
         ptnList.addAll(data)
         adapter.notifyDataSetChanged()
-        Log.d("TESTAPI", data.get(0).getNAMA())
+        Log.d("TESTAPI", data.get(0).getWORLDRANK())
     }
 
     override fun showError(error: String) {
         toast(error)
     }
-
-
-//    private fun loadPTN() {
-//        val apiService = ApiBuilder.getClient()?.create(ApiService::class.java)
-//        val call = apiService?.getListPTN()
-//        call?.enqueue(this)
-//    }
-//
-//    override fun onFailure(call: Call<List<PTN>>, t: Throwable) {
-//        Log.d("TESTAPI", "Message " + t.message)
-//        Log.d("TESTAPI", "Loc Mess " + t.localizedMessage)
-//    }
-//
-//    override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
-//        Log.d("TESTAPI", "TEST X")
-//        Log.d("TESTAPI", response.body()?.size.toString())
-//        for (ptn in response.body()!!.indices) {
-//            Log.d("TESTAPI", "test " + response.body()!![ptn].getNAMA())
-//        }
 }

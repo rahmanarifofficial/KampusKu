@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        removeShiftingBar(bottom_navigation)
+//        removeShiftingBar(bottom_navigation)
         bottom_navigation.inflateMenu(R.menu.menu_bottom_navigation);
         fragmentManager = supportFragmentManager;
 
@@ -42,24 +42,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("RestrictedApi")
-    private fun removeShiftingBar(view: BottomNavigationView) {
-        val menuView: BottomNavigationMenuView = view.getChildAt(0) as BottomNavigationMenuView
-        val i: Int = 0
-        try {
-            val shiftingMode = menuView.javaClass.getDeclaredField("mShiftingMode")
-            shiftingMode.setAccessible(true)
-            shiftingMode.setBoolean(menuView, false)
-            shiftingMode.setAccessible(false)
-            for (i in 0 until menuView.getChildCount()) {
-                val item = menuView.getChildAt(i) as BottomNavigationItemView
-                item.setShiftingMode(false)
-                // set once again checked value, so view will be updated
-
-                item.setChecked(item.getItemData().isChecked())
-            }
-        } catch (e: NoSuchFieldException) {
-
-        }
-    }
+//    @SuppressLint("RestrictedApi")
+//    private fun removeShiftingBar(view: BottomNavigationView) {
+//        val menuView: BottomNavigationMenuView = view.getChildAt(0) as BottomNavigationMenuView
+//        val i: Int = 0
+//        try {
+//            val shiftingMode = menuView.javaClass.getDeclaredField("mShiftingMode")
+//            shiftingMode.setAccessible(true)
+//            shiftingMode.setBoolean(menuView, false)
+//            shiftingMode.setAccessible(false)
+//            for (i in 0 until menuView.getChildCount()) {
+//                val item = menuView.getChildAt(i) as BottomNavigationItemView
+//                item.setShiftingMode(false)
+//                // set once again checked value, so view will be updated
+//
+//                item.setChecked(item.getItemData().isChecked())
+//            }
+//        } catch (e: NoSuchFieldException) {
+//
+//        }
+//    }
 }

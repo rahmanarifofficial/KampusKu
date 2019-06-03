@@ -1,6 +1,7 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class PtnListAdapter(private var ptn: List<PTN>, private val listener: (PTN) -> 
         fun bindPtn(ptn: PTN, listener: (PTN) -> Unit) {
             itemView.tv_ptn.text = ptn.getNAMA()
             itemView.tv_link_ptn.text = ptn.getLINKPMB()
+            itemView.tv_akreditasi_ptn.text = ptn.getAKREDITASI()
             Picasso.get()
                 .load(ptn.getLINKLOGO())
                 .centerCrop()

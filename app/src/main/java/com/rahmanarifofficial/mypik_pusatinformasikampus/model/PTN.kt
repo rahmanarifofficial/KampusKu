@@ -6,46 +6,79 @@ import com.google.gson.annotations.SerializedName
 class PTN {
     @SerializedName("KODE")
     @Expose
-    private var kode: String? = null
+    private var kODE: String? = null
     @SerializedName("NAMA")
     @Expose
-    private var nama: String? = null
+    private var nAMA: String? = null
     @SerializedName("LINK_PMB")
     @Expose
-    private var linkpmb: String? = null
+    private var lINKPMB: String? = null
     @SerializedName("LINK_LOGO")
     @Expose
-    private var linklogo: String? = null
+    private var lINKLOGO: String? = null
+    @SerializedName("AKREDITASI")
+    @Expose
+    private var aKREDITASI: String? = null
+    @SerializedName("PROVINSI")
+    @Expose
+    private var pROVINSI: String? = null
+    @SerializedName("WORLD_RANK")
+    @Expose
+    private var wORLDRANK: String? = null
 
     fun getKODE(): String? {
-        return kode
+        return kODE
     }
 
     fun setKODE(kODE: String) {
-        this.kode = kODE
+        this.kODE = kODE
     }
 
     fun getNAMA(): String? {
-        return nama
+        return nAMA
     }
 
     fun setNAMA(nAMA: String) {
-        this.nama = nAMA
+        this.nAMA = nAMA
     }
 
     fun getLINKPMB(): String? {
-        return linkpmb
+        return lINKPMB
     }
 
     fun setLINKPMB(lINKPMB: String) {
-        this.linkpmb = lINKPMB
+        this.lINKPMB = lINKPMB
     }
 
     fun getLINKLOGO(): String? {
-        return linklogo
+        return lINKLOGO
     }
 
     fun setLINKLOGO(lINKLOGO: String) {
-        this.linklogo = lINKLOGO
+        this.lINKLOGO = lINKLOGO
+    }
+
+    fun getAKREDITASI(): String? {
+        return aKREDITASI
+    }
+
+    fun setAKREDITASI(aKREDITASI: String) {
+        this.aKREDITASI = aKREDITASI
+    }
+
+    fun getPROVINSI(): String? {
+        return pROVINSI
+    }
+
+    fun setPROVINSI(pROVINSI: String) {
+        this.pROVINSI = pROVINSI
+    }
+
+    fun getWORLDRANK(): String? {
+        return wORLDRANK
+    }
+
+    fun setWORLDRANK(wORLDRANK: String) {
+        this.wORLDRANK = wORLDRANK
     }
 }
