@@ -14,4 +14,10 @@
   <string name="rank_ptn_text">World Rank PTN</string>
   <string name="jumlah_prodi_text">Jumlah Prodi</string>
   <string name="provinsi_ptn_text">Provinsi</string>
+  <string name="nama_prodi_text">Nama Prodi</string>
+  <string name="daya_tampung_text">Kuota</string>
+  <string name="daya_tampung_2018_text">Kuota 2018</string>
+  <string name="persentase_kursi_text">Persentasi Kursi</string>
+  <string name="jenis_portofolio_text">Jenis Portofolio</string>
+  <string name="tipe_text">Tipe</string>
 </resources>

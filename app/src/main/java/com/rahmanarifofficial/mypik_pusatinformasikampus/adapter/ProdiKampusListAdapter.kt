@@ -32,6 +32,8 @@ class ProdiKampusListAdapter(private var prodi: List<Prodi>, private val listene
         fun bindProdi(prodi: Prodi, listener: (Prodi) -> Unit) {
             itemView.tv_prodi_detail_ptn.text = prodi.getNamaProdi()
             itemView.tv_kuota_prodi_detail_ptn.text = prodi.getDayaTampung2019()
+            itemView.tv_akreditasi_prodi_detail_ptn.text = prodi.getAkreditasi()
+            val kode = prodi.getKodeProdi()
             itemView.setOnClickListener {
                 listener(prodi)
             }

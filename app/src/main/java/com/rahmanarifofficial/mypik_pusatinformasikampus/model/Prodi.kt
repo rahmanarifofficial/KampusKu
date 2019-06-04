@@ -28,6 +28,9 @@ class Prodi {
     @SerializedName("nama_universitas")
     @Expose
     private var namaUniversitas: String? = null
+    @SerializedName("akreditasi")
+    @Expose
+    private var akreditasi: String? = null
 
     fun getKodePtn(): String? {
         return kodePtn
@@ -91,5 +94,13 @@ class Prodi {
 
     fun setNamaUniversitas(namaUniversitas: String) {
         this.namaUniversitas = namaUniversitas
+    }
+
+    fun getAkreditasi(): String? {
+        return akreditasi
+    }
+
+    fun setAkreditasi(akreditasi: String) {
+        this.akreditasi = akreditasi
     }
 }

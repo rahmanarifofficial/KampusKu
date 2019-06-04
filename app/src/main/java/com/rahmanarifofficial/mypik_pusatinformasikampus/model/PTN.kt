@@ -25,6 +25,12 @@ class PTN {
     @SerializedName("WORLD_RANK")
     @Expose
     private var worldrank: String? = null
+    @SerializedName("JUMLAH_PRODI")
+    @Expose
+    private var jumlah_prodi: String? = null
+    @SerializedName("LINK_DROP")
+    @Expose
+    private var link_drop: String? = null
 
     fun getKODE(): String? {
         return kode
@@ -80,5 +86,21 @@ class PTN {
 
     fun setWORLDRANK(wORLDRANK: String) {
         this.worldrank = wORLDRANK
+    }
+
+    fun getJUMLAHPRODI(): String? {
+        return jumlah_prodi
+    }
+
+    fun setJUMLAHPRODI(kuota: String) {
+        this.jumlah_prodi = kuota
+    }
+
+    fun getLINKDROP(): String? {
+        return link_drop
+    }
+
+    fun setLINKDROP(link_drop: String?) {
+        this.link_drop = link_drop
     }
 }

@@ -17,7 +17,7 @@
         android:layout_width="0dp"
         android:layout_weight="1.4"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/neosansblack"
+        android:fontFamily="@font/robotoregular"
         android:textSize="13sp"/>
     <TextView
         android:id="@+id/tv_kuota_prodi_detail_ptn"

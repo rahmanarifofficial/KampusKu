@@ -58,5 +58,19 @@ class KampusPresenter() {
                 }
             })
         }
+
+        fun getDetailProdi(view: ProdiKampusView, kode: String) {
+            val apiService = ApiBuilder.getClient()?.create(ApiService::class.java)
+            val call = apiService?.getDetailProdi(kode)
+            call?.enqueue(object : Callback<List<Prodi>> {
+                override fun onResponse(call: Call<List<Prodi>>, response: Response<List<Prodi>>) {
+                    view.showDetailProdi(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<List<Prodi>>, t: Throwable) {
+                    view.showError(t.message!!)
+                }
+            })
+        }
     }
 }
