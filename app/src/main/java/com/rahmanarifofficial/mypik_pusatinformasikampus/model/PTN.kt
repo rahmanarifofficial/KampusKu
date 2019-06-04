@@ -6,79 +6,79 @@ import com.google.gson.annotations.SerializedName
 class PTN {
     @SerializedName("KODE")
     @Expose
-    private var kODE: String? = null
+    private var kode: String? = null
     @SerializedName("NAMA")
     @Expose
-    private var nAMA: String? = null
+    private var nama: String? = null
     @SerializedName("LINK_PMB")
     @Expose
-    private var lINKPMB: String? = null
+    private var link_pmb: String? = null
     @SerializedName("LINK_LOGO")
     @Expose
-    private var lINKLOGO: String? = null
+    private var link_logo: String? = null
     @SerializedName("AKREDITASI")
     @Expose
-    private var aKREDITASI: String? = null
+    private var akreditasi: String? = null
     @SerializedName("PROVINSI")
     @Expose
-    private var pROVINSI: String? = null
+    private var provinsi: String? = null
     @SerializedName("WORLD_RANK")
     @Expose
-    private var wORLDRANK: String? = null
+    private var worldrank: String? = null
 
     fun getKODE(): String? {
-        return kODE
+        return kode
     }
 
     fun setKODE(kODE: String) {
-        this.kODE = kODE
+        this.kode = kODE
     }
 
     fun getNAMA(): String? {
-        return nAMA
+        return nama
     }
 
     fun setNAMA(nAMA: String) {
-        this.nAMA = nAMA
+        this.nama = nAMA
     }
 
     fun getLINKPMB(): String? {
-        return lINKPMB
+        return link_pmb
     }
 
     fun setLINKPMB(lINKPMB: String) {
-        this.lINKPMB = lINKPMB
+        this.link_pmb = lINKPMB
     }
 
     fun getLINKLOGO(): String? {
-        return lINKLOGO
+        return link_logo
     }
 
     fun setLINKLOGO(lINKLOGO: String) {
-        this.lINKLOGO = lINKLOGO
+        this.link_logo = lINKLOGO
     }
 
     fun getAKREDITASI(): String? {
-        return aKREDITASI
+        return akreditasi
     }
 
     fun setAKREDITASI(aKREDITASI: String) {
-        this.aKREDITASI = aKREDITASI
+        this.akreditasi = aKREDITASI
     }
 
     fun getPROVINSI(): String? {
-        return pROVINSI
+        return provinsi
     }
 
     fun setPROVINSI(pROVINSI: String) {
-        this.pROVINSI = pROVINSI
+        this.provinsi = pROVINSI
     }
 
     fun getWORLDRANK(): String? {
-        return wORLDRANK
+        return worldrank
     }
 
     fun setWORLDRANK(wORLDRANK: String) {
-        this.wORLDRANK = wORLDRANK
+        this.worldrank = wORLDRANK
     }
 }

@@ -9,6 +9,9 @@
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="ptn_text">Nama PTN</string>
-  <string name="web_ptn_text">Website PMB PTN</string>
+  <string name="web_ptn_text">Info Pendaftaran PTN</string>
   <string name="akreditasi_ptn_text">Akreditasi</string>
+  <string name="rank_ptn_text">World Rank PTN</string>
+  <string name="jumlah_prodi_text">Jumlah Prodi</string>
+  <string name="provinsi_ptn_text">Provinsi</string>
 </resources>

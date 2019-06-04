@@ -10,21 +10,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
-import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.PtnListAdapter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
-import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.PtnPresenter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.toast
 
-class KampusFragment : Fragment(), PtnView {
+class KampusFragment : Fragment(), KampusView {
     private lateinit var pb_ptn: ProgressBar
     private lateinit var swiperefresh_ptn: SwipeRefreshLayout
     private lateinit var list_ptn: RecyclerView
-    private lateinit var adapter: PtnListAdapter
+    private lateinit var adapter: KampusListAdapter
 
     private var ptnList: MutableList<PTN> = mutableListOf()
 
@@ -40,14 +39,14 @@ class KampusFragment : Fragment(), PtnView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        PtnPresenter.getListPTN(this)
-        adapter = PtnListAdapter(ptnList) {
-            activity?.startActivity<DetailPTNActivity>()
+        KampusPresenter.getListPTN(this)
+        adapter = KampusListAdapter(ptnList) {
+            activity?.startActivity<DetailKampusActivity>("kode" to "${it.getKODE()}")
         }
         list_ptn.layoutManager = LinearLayoutManager(activity)
         list_ptn.adapter = adapter
         swiperefresh_ptn.onRefresh {
-            PtnPresenter.getListPTN(this)
+            KampusPresenter.getListPTN(this)
         }
     }
 

@@ -1,7 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_ptn.view.*
 
-class PtnListAdapter(private var ptn: List<PTN>, private val listener: (PTN) -> Unit) :
-    RecyclerView.Adapter<PtnListAdapter.PtnViewHolder>() {
+class KampusListAdapter(private var ptn: List<PTN>, private val listener: (PTN) -> Unit) :
+    RecyclerView.Adapter<KampusListAdapter.PtnViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PtnViewHolder {
         return PtnViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_ptn, parent, false))
     }
