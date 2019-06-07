@@ -1,11 +1,10 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
 
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,11 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.ProdiKampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
-import org.jetbrains.anko.db.INTEGER
 import org.jetbrains.anko.support.v4.toast
 import java.text.DecimalFormat
 
-class ProdiSaintekFragment : Fragment(), ProdiKampusView {
+class ProdiSaintekFragment : Fragment(),
+    ProdiKampusView {
 
     private lateinit var list_prodi_ptn: RecyclerView
     private lateinit var adapter: ProdiKampusListAdapter
@@ -35,7 +34,8 @@ class ProdiSaintekFragment : Fragment(), ProdiKampusView {
 
     companion object {
         fun saintekIntance(kode: String): ProdiSaintekFragment {
-            val fragment = ProdiSaintekFragment()
+            val fragment =
+                ProdiSaintekFragment()
             val args = Bundle()
             args.putString("kode", kode)
             fragment.arguments = args

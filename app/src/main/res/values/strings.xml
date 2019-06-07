@@ -20,4 +20,18 @@
   <string name="persentase_kursi_text">Persentasi Kursi</string>
   <string name="jenis_portofolio_text">Jenis Portofolio</string>
   <string name="tipe_text">Tipe</string>
+  <string name="sign_in">masuk</string>
+  <string name="email_text">Email</string>
+  <string name="nomor_indonesia_text">+62</string>
+  <string name="kode_verifikasi_text">Password</string>
+  <string name="sign_up">registrasi</string>
+  <string name="error_field_required">Field dibutuhkan</string>
+  <string name="app_login">App was login</string>
+  <string name="nama_profile">Nama</string>
+  <string name="telepon_profile">No Telepon</string>
+  <string name="alamat_profile">Alamat Lengkap</string>
+  <string name="asal_sekolah_profile">Asal Sekolah</string>
+  <string name="sosial_media_profile">Sosial Media</string>
+  <string name="instagram_profile">Instagram</string>
+  <string name="facebook_profile">Facebook</string>
 </resources>

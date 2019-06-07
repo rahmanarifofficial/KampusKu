@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
 
 import android.graphics.Color
 import android.os.Bundle
@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.activity_detail_kampus.*
 import org.jetbrains.anko.toast
 
 
-class DetailKampusActivity : AppCompatActivity(), DetailKampusView {
+class DetailKampusActivity : AppCompatActivity(),
+    DetailKampusView {
 
     private lateinit var kode: String
     private lateinit var tvAkreditas: TextView
@@ -67,10 +68,12 @@ class DetailKampusActivity : AppCompatActivity(), DetailKampusView {
     private fun setupViewPager(pager: ViewPager) {
         val adapter = ProdiPagerAdapter(supportFragmentManager)
 
-        val saintek = ProdiSaintekFragment.saintekIntance(kode)
+        val saintek =
+            ProdiSaintekFragment.saintekIntance(kode)
         adapter.addFragment(saintek, "SAINTEK")
 
-        val soshum = ProdiSoshumFragment.soshumIntance(kode)
+        val soshum =
+            ProdiSoshumFragment.soshumIntance(kode)
         adapter.addFragment(soshum, "SOSHUM")
 
         pager.adapter = adapter

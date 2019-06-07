@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".view.KampusFragment">
+    tools:context=".view.kampus.KampusFragment">
 
   <RelativeLayout
       android:layout_width="match_parent"

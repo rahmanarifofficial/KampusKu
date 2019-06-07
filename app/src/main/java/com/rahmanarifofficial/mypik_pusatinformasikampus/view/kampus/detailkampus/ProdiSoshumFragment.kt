@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
 
 
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,8 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresent
 import org.jetbrains.anko.support.v4.toast
 import java.text.DecimalFormat
 
-class ProdiSoshumFragment : Fragment(), ProdiKampusView {
+class ProdiSoshumFragment : Fragment(),
+    ProdiKampusView {
 
     private lateinit var list_prodi_ptn: RecyclerView
     private lateinit var adapter: ProdiKampusListAdapter
@@ -36,7 +36,8 @@ class ProdiSoshumFragment : Fragment(), ProdiKampusView {
 
     companion object {
         fun soshumIntance(kode: String): ProdiSoshumFragment {
-            val fragment = ProdiSoshumFragment()
+            val fragment =
+                ProdiSoshumFragment()
             val args = Bundle()
             args.putString("kode", kode)
             fragment.arguments = args

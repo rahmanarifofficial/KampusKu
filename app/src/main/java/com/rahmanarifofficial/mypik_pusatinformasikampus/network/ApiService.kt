@@ -1,10 +1,10 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.network
 
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
+import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
     @GET("index.php/api/universitas/ptn")
@@ -18,4 +18,24 @@ interface ApiService {
 
     @GET("index.php/api/universitas/prodi_ptn")
     fun getDetailProdi(@Query("kode_prodi") kode: String): Call<List<Prodi>>
+
+    @POST("index.php/api/universitas/pengguna")
+    @FormUrlEncoded
+    fun insertPengguna(
+        @Field("nama_pengguna") namaPengguna: String,
+        @Field("email_pengguna") emailPengguna: String,
+        @Field("password_pengguna") passwordPengguna: String,
+        @Field("alamat_pengguna") alamatPengguna: String,
+        @Field("no_telp") noTelp: String,
+        @Field("asal_sekolah") asalSekolah: String,
+        @Field("instagram") instagram: String,
+        @Field("facebook") facebook: String,
+        @Field("link_foto") link_foto: String
+    ): Call<Pengguna>
+
+    @GET("index.php/api/universitas/pengguna")
+    fun getPengguna(
+        @Query("email_pengguna") emailPengguna: String,
+        @Query("password_pengguna") passwordPengguna: String
+    ): Call<List<Pengguna>>
 }

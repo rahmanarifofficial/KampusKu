@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 
 import android.os.Bundle
@@ -15,6 +15,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.DetailKampusActivity
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.toast
@@ -68,6 +69,5 @@ class KampusFragment : Fragment(), KampusView {
 
     override fun showError(error: String) {
         toast(error)
-        KampusPresenter.getListPTN(this)
     }
 }

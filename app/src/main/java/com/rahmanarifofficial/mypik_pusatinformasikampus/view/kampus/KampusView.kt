@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 

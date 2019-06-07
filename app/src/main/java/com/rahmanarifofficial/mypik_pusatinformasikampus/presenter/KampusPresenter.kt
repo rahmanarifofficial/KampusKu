@@ -4,13 +4,12 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiBuilder
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiService
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.DetailKampusView
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.KampusView
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.ProdiKampusView
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.DetailKampusView
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.KampusView
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.ProdiKampusView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class KampusPresenter() {
     companion object {
