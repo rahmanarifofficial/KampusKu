@@ -34,4 +34,6 @@
   <string name="sosial_media_profile">Sosial Media</string>
   <string name="instagram_profile">Instagram</string>
   <string name="facebook_profile">Facebook</string>
+  <string name="bantuan_text">Bantuan</string>
+  <string name="sign_out">Keluar</string>
 </resources>

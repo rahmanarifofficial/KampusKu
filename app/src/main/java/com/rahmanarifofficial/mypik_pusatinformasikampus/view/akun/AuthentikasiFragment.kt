@@ -3,7 +3,6 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,18 +13,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
-import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.NewProfileFragment
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.ProfileFragment
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import org.jetbrains.anko.support.v4.toast
 
 
-class AuthentikasiFragment : Fragment(), View.OnClickListener,
-    AkunView {
+class AuthentikasiFragment : Fragment(), View.OnClickListener, AkunView {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
+    private lateinit var prefs: AuthPreferences
 
     private lateinit var btnSignIn: Button
     private lateinit var btnSignUp: Button
@@ -52,8 +49,7 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener,
         super.onActivityCreated(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        val prefs = LoginPreferences(activity!!)
-        Log.d("TESTPREFS", prefs.getWasLogin().toString())
+        prefs = AuthPreferences(activity!!)
     }
 
     override fun onClick(v: View?) {
@@ -65,8 +61,8 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener,
 
     override fun onStart() {
         super.onStart()
-//        val currentUser = auth.getCurrentUser()
-//        updateUI(currentUser!!, 2)
+        val currentUser = auth.getCurrentUser()
+        updateUI(currentUser, 1)
     }
 
     private fun loginPengguna() {
@@ -92,6 +88,8 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener,
         }
 
         if (!cancel) {
+            prefs.setSaveEmail(email)
+            prefs.setSavePassword(password)
             AkunPresenter.loginPengguna(this, email, password, activity!!)
         }
 
@@ -116,6 +114,8 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener,
             cancel = true
         }
         if (!cancel) {
+            prefs.setSaveEmail(email)
+            prefs.setSavePassword(password)
             AkunPresenter.daftarPengguna(this, email, password, activity!!)
         }
     }
@@ -124,15 +124,12 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener,
         toast(data)
     }
 
-    override fun updateUI(user: FirebaseUser, type: Int) {
-        when (type) {
-            1 -> showFragment(ProfileFragment())
-            2 -> showFragment(
-                NewProfileFragment.newProfileInstance(
-                    fieldEmail.text.toString(),
-                    fieldPassword.text.toString()
-                )
-            )
+    override fun updateUI(user: FirebaseUser?, type: Int) {
+        if (user != null) {
+            when (type) {
+                1 -> showFragment(ProfileFragment())
+                2 -> showFragment(NewProfileFragment())
+            }
         }
     }
 

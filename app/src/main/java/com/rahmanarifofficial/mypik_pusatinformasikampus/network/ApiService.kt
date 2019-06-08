@@ -28,9 +28,9 @@ interface ApiService {
         @Field("alamat_pengguna") alamatPengguna: String,
         @Field("no_telp") noTelp: String,
         @Field("asal_sekolah") asalSekolah: String,
-        @Field("instagram") instagram: String,
-        @Field("facebook") facebook: String,
-        @Field("link_foto") link_foto: String
+        @Field("instagram") instagram: String?,
+        @Field("facebook") facebook: String?,
+        @Field("link_foto") link_foto: String?
     ): Call<Pengguna>
 
     @GET("index.php/api/universitas/pengguna")

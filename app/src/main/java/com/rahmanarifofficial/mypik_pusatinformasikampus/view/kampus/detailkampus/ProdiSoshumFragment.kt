@@ -6,6 +6,7 @@ import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -113,7 +114,7 @@ class ProdiSoshumFragment : Fragment(),
     }
 
     override fun showError(data: String) {
-        toast(data)
+        Log.d("TAGERROR",data)
     }
 
 }

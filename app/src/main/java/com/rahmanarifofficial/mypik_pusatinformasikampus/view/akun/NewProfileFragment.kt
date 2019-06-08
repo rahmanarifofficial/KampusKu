@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -9,13 +9,14 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.firebase.storage.FirebaseStorage
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import kotlinx.android.synthetic.main.fragment_new_profile.*
 import org.jetbrains.anko.support.v4.toast
 import java.io.ByteArrayOutputStream
@@ -27,20 +28,11 @@ import java.util.*
 class NewProfileFragment : Fragment(), NewProfileView {
 
     private lateinit var foto: Uri
-    private var linkFoto: String = "test"
     private val GALLERY = 1
     private val CAMERA = 2
 
     companion object {
         private val IMAGE_DIRECTORY = "/kampusku"
-        fun newProfileInstance(email: String, password: String): NewProfileFragment {
-            val fragment = NewProfileFragment()
-            val args = Bundle()
-            args.putString("email", email)
-            args.putString("password", password)
-            fragment.arguments = args
-            return fragment
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,12 +42,20 @@ class NewProfileFragment : Fragment(), NewProfileView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        foto = Uri.parse("null")
         iv_foto_profil_new_akun.setOnClickListener {
             showPickerImage()
         }
         btn_daftar_new_akun.setOnClickListener {
-            val email = arguments?.getString("email")
-            val password = arguments?.getString("password")
+            val prefs = AuthPreferences(activity!!)
+            val email = prefs.getEmail()
+            val password = prefs.getPassword()
+
+            et_nama_new_akun.setError(null)
+            et_telepon_new_akun.setError(null)
+            et_alamat_new_akun.setError(null)
+            et_asal_sekolah_new_akun.setError(null)
+
             val nama = et_nama_new_akun.text.toString()
             val noTelp = et_telepon_new_akun.text.toString()
             val alamat = et_alamat_new_akun.text.toString()
@@ -63,18 +63,42 @@ class NewProfileFragment : Fragment(), NewProfileView {
             val instagram = et_instagram_new_akun.text.toString()
             val facebook = et_facebook_new_akun.text.toString()
 
-            AkunPresenter.insertPengguna(
-                this,
-                email!!,
-                password!!,
-                nama,
-                noTelp,
-                alamat,
-                sekolah,
-                instagram,
-                facebook,
-                foto
-            )
+            var cancel = false
+
+            if (TextUtils.isEmpty(nama)) {
+                et_nama_new_akun.setError(getString(R.string.error_field_required))
+                cancel = true
+            }
+
+            if (TextUtils.isEmpty(noTelp)) {
+                et_telepon_new_akun.setError(getString(R.string.error_field_required))
+                cancel = true
+            }
+
+            if (TextUtils.isEmpty(alamat)) {
+                et_alamat_new_akun.setError(getString(R.string.error_field_required))
+                cancel = true
+            }
+
+            if (TextUtils.isEmpty(sekolah)) {
+                et_asal_sekolah_new_akun.setError(getString(R.string.error_field_required))
+                cancel = true
+            }
+
+            if (!cancel) {
+                AkunPresenter.insertPengguna(
+                    this,
+                    email,
+                    password,
+                    nama,
+                    noTelp,
+                    alamat,
+                    sekolah,
+                    instagram,
+                    facebook,
+                    foto
+                )
+            }
         }
     }
 
@@ -103,7 +127,7 @@ class NewProfileFragment : Fragment(), NewProfileView {
         startActivityForResult(intent, CAMERA)
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GALLERY) {
             if (data != null) {

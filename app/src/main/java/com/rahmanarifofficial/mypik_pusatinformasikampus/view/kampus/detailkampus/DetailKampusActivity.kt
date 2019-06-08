@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
@@ -51,7 +52,7 @@ class DetailKampusActivity : AppCompatActivity(),
     }
 
     override fun showError(error: String) {
-        toast(error)
+        Log.d("TAGERROR", error)
         KampusPresenter.getPTN(this, kode)
     }
 

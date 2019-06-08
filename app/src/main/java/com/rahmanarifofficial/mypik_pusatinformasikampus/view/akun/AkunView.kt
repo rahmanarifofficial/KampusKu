@@ -6,5 +6,5 @@ interface AkunView {
     fun showToast(data: String)
     fun showProgress()
     fun hideProgress()
-    fun updateUI(user: FirebaseUser, type: Int)
+    fun updateUI(user: FirebaseUser?, type: Int)
 }

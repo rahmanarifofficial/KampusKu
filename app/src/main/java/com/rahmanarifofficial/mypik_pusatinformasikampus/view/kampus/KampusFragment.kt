@@ -68,6 +68,6 @@ class KampusFragment : Fragment(), KampusView {
     }
 
     override fun showError(error: String) {
-        toast(error)
+        Log.d("TAGERROR", error)
     }
 }
