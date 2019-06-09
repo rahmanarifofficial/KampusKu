@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+  <TextView
+      android:text="@string/pilih_kampus1_text"
+      android:fontFamily="@font/neosansblack"
+      android:textSize="13sp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <Spinner
+      android:id="@+id/spinner_pilihan_kampus_1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"/>
+
+  <Spinner
+      android:id="@+id/spinner_pilihan_jurusan_1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:visibility="gone"/>
+
+  <TextView
+      android:text="@string/pilih_kampus2_text"
+      android:fontFamily="@font/neosansblack"
+      android:textSize="13sp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <Spinner
+      android:id="@+id/spinner_pilihan_kampus_2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"/>
+
+  <Spinner
+      android:id="@+id/spinner_pilihan_jurusan_2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:visibility="gone"/>
+</LinearLayout>

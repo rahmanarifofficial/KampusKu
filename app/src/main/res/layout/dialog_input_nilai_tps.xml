@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+  <TextView
+      android:text="@string/nilai_tps"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/neosansblack"
+      android:textSize="13sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_kp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_kp_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_pk"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_pk_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_ppu"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_ppu_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_kmbm"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_kmbm_text"
+      android:textSize="12sp"/>
+
+</LinearLayout>

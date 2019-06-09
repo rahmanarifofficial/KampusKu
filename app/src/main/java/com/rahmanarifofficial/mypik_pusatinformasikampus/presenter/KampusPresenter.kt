@@ -30,6 +30,23 @@ class KampusPresenter() {
             })
         }
 
+        fun getSearchPTN(view: KampusView, nama: String) {
+            view.showLoading()
+            val apiService = ApiBuilder.getClient()?.create(ApiService::class.java)
+            val call = apiService?.getSearchPTN(nama)
+            call?.enqueue(object : Callback<List<PTN>> {
+                override fun onFailure(call: Call<List<PTN>>, t: Throwable) {
+                    view.showError(t.message!!)
+                    view.hideLoading()
+                }
+
+                override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
+                    view.showPtnList(response.body())
+                    view.hideLoading()
+                }
+            })
+        }
+
         fun getPTN(view: DetailKampusView, kode: String) {
             val apiService = ApiBuilder.getClient()?.create(ApiService::class.java)
             val call = apiService?.getDetailPTN(kode)

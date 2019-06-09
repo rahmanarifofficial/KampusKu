@@ -1,15 +1,15 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
@@ -20,7 +20,8 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.toast
 
-class KampusFragment : Fragment(), KampusView {
+class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
+
     private lateinit var pb_ptn: ProgressBar
     private lateinit var swiperefresh_ptn: SwipeRefreshLayout
     private lateinit var list_ptn: RecyclerView
@@ -40,6 +41,7 @@ class KampusFragment : Fragment(), KampusView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setHasOptionsMenu(true)
         KampusPresenter.getListPTN(this)
         adapter = KampusListAdapter(ptnList) {
             activity?.startActivity<DetailKampusActivity>("kode" to "${it.getKODE()}")
@@ -51,6 +53,15 @@ class KampusFragment : Fragment(), KampusView {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_home, menu)
+        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        searchView.queryHint = getString(R.string.search)
+        searchView.setOnQueryTextListener(this)
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun showLoading() {
         pb_ptn.visibility = View.VISIBLE
     }
@@ -59,15 +70,32 @@ class KampusFragment : Fragment(), KampusView {
         pb_ptn.visibility = View.INVISIBLE
     }
 
-    override fun showPtnList(data: List<PTN>) {
+    override fun showPtnList(data: List<PTN>?) {
         swiperefresh_ptn.isRefreshing = false
-        ptnList.clear()
-        ptnList.addAll(data)
-        adapter.notifyDataSetChanged()
-        Log.d("TESTAPI", data.get(0).getWORLDRANK())
+        if (!data.isNullOrEmpty()) {
+            ptnList.clear()
+            ptnList.addAll(data)
+            adapter.notifyDataSetChanged()
+            Log.d("TAGERROR", data.toString())
+            Log.d("TAGERROR", data.get(0).getWORLDRANK())
+        }
     }
 
     override fun showError(error: String) {
         Log.d("TAGERROR", error)
     }
+
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        if (p0!!.isNotEmpty()) {
+            KampusPresenter.getSearchPTN(this, p0)
+        } else {
+            KampusPresenter.getListPTN(this)
+        }
+        return false
+    }
+
 }

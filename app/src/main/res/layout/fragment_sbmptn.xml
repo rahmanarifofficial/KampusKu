@@ -4,7 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SbmptnFragment">
+    tools:context=".view.proyeksi.SbmptnFragment"
+    android:padding="16dp"
+    android:orientation="vertical">
 
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/text_proyeksi"
+      android:fontFamily="@font/neosansblack"
+      android:textSize="15sp"
+      android:textAlignment="center"
+      android:textColor="@color/textPrimary"
+      android:layout_marginBottom="16dp"/>
 
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/konten_proyeksi"
+      android:fontFamily="@font/robotoregular"
+      android:textSize="13sp"
+      android:layout_marginBottom="16dp"/>
+
+  <Button
+      android:id="@+id/btnInputUTBK"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/input_utbk"
+      android:background="@color/colorPrimary"
+      android:textColor="@android:color/white"
+      android:layout_marginBottom="16dp"/>
+
+  <Button
+      android:id="@+id/btnLihatProyeksi"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/lihat_proyeksi"
+      android:background="@color/colorAccent"
+      android:textColor="@android:color/white"
+      android:layout_marginBottom="16dp"/>
 </LinearLayout>

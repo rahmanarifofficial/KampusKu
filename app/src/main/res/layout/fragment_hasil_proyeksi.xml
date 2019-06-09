@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="16dp"
+      tools:context=".view.proyeksi.HasilProyeksiFragment"
+      android:orientation="vertical">
+
+    <TextView
+        android:text="@string/pilih_kampus1_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neosansblack"
+        android:layout_marginBottom="16dp"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+      <TextView
+          android:id="@+id/tv_kampus_1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:layout_marginBottom="16dp"
+          android:textSize="13sp"/>
+
+      <TextView
+          android:id="@+id/tv_proyeksi_kampus_1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginBottom="16dp"
+          android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/pilih_kampus2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neosansblack"
+        android:layout_marginBottom="16dp"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+      <TextView
+          android:id="@+id/tv_kampus_2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:layout_marginBottom="16dp"
+          android:textSize="13sp"/>
+
+      <TextView
+          android:id="@+id/tv_proyeksi_kampus_2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginBottom="16dp"
+          android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_detail_pilihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/dialog_detail_pilihan_kampus"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:text="@string/rekomendasi_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neosansblack"
+        android:layout_marginBottom="16dp"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_marginBottom="10dp">
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="3"
+          android:text="@string/ptn_text"
+          android:textAlignment="center"/>
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:text="@string/daya_tampung_text"/>
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:textAlignment="center"
+          android:text="@string/persentase_kursi_text"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_list_rekomendasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
+</ScrollView>

@@ -150,7 +150,7 @@
 
     <TextView
         android:layout_width="0dp"
-        android:layout_weight="0.7"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:text="@string/persentase_kursi_text"
         android:fontFamily="@font/robotoregular"
@@ -158,7 +158,7 @@
     <TextView
         android:id="@+id/tv_persentase_kursi_detail_prodi"
         android:layout_width="0dp"
-        android:layout_weight="1.3"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:fontFamily="@font/robotoblack"
         android:textSize="14sp"/>

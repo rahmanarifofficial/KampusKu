@@ -1,6 +1,5 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -12,6 +11,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -27,6 +27,7 @@ class ProfileFragment : Fragment(), ProfileView {
         super.onActivityCreated(savedInstanceState)
 
         val prefs = AuthPreferences(activity!!)
+        val loginPrefs = LoginPreferences(activity!!)
         val email = prefs.getEmail()
         val password = prefs.getPassword()
 
@@ -38,6 +39,7 @@ class ProfileFragment : Fragment(), ProfileView {
         }
         btnLogout.setOnClickListener {
             auth.signOut()
+            loginPrefs.setWasLogin(false)
             val fm = fragmentManager
             val ft = fm!!.beginTransaction()
             ft.replace(R.id.main_container, AuthentikasiFragment())
@@ -65,15 +67,13 @@ class ProfileFragment : Fragment(), ProfileView {
     }
 
     override fun showToast(data: String) {
-        Log.d("TAGERROR",data)
+        Log.d("TAGERROR", data)
     }
 
     override fun updateUI() {
         val fm = fragmentManager
         val ft = fm!!.beginTransaction()
-        ft.replace(R.id.main_container,
-            NewProfileFragment()
-        )
+        ft.replace(R.id.main_container, NewProfileFragment())
         ft.commit()
     }
 

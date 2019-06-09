@@ -13,8 +13,14 @@ interface ApiService {
     @GET("index.php/api/universitas/ptn")
     fun getDetailPTN(@Query("kode") kode: String): Call<List<PTN>>
 
+    @GET("index.php/api/universitas/search_ptn")
+    fun getSearchPTN(@Query("nama") nama: String): Call<List<PTN>>
+
     @GET("index.php/api/universitas/prodi_ptn")
     fun getProdiList(@Query("kode_ptn") kode: String, @Query("tipe") tipe: String): Call<List<Prodi>>
+
+    @GET("index.php/api/universitas/prodi_ptn")
+    fun getProdiListByPTN(@Query("kode_ptn") kode: String): Call<List<Prodi>>
 
     @GET("index.php/api/universitas/prodi_ptn")
     fun getDetailProdi(@Query("kode_prodi") kode: String): Call<List<Prodi>>

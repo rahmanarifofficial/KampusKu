@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+  <TextView
+      android:text="@string/nilai_soshum"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/neosansblack"
+      android:textSize="13sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_ms_sos"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_ms_sos_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_g"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_g_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_sejarah"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_sejarah_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_s"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_s_text"
+      android:textSize="12sp"/>
+
+  <EditText
+      android:id="@+id/et_nilai_e"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/nilai_e_text"
+      android:textSize="12sp"/>
+
+</LinearLayout>

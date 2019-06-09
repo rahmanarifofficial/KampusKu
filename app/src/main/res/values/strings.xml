@@ -15,9 +15,9 @@
   <string name="jumlah_prodi_text">Jumlah Prodi</string>
   <string name="provinsi_ptn_text">Provinsi</string>
   <string name="nama_prodi_text">Nama Prodi</string>
-  <string name="daya_tampung_text">Kuota</string>
-  <string name="daya_tampung_2018_text">Kuota 2018</string>
-  <string name="persentase_kursi_text">Persentasi Kursi</string>
+  <string name="daya_tampung_text">Kuota SBMPTN</string>
+  <string name="daya_tampung_2018_text">Peminat SBMPTN 2018</string>
+  <string name="persentase_kursi_text">Persentasi Keketatan Berdasar Tahun Lalu</string>
   <string name="jenis_portofolio_text">Jenis Portofolio</string>
   <string name="tipe_text">Tipe</string>
   <string name="sign_in">masuk</string>
@@ -36,4 +36,40 @@
   <string name="facebook_profile">Facebook</string>
   <string name="bantuan_text">Bantuan</string>
   <string name="sign_out">Keluar</string>
+  <string name="text_proyeksi">Proyeksikan Kampus Mu</string>
+  <string name="konten_proyeksi">Fitur ini berguna untuk memproyeksikan kampus impian mu berdasarkan nilai UTBK
+    yang telah kamu dapatkan sebelumnya, proyeksi itu dapat kamu gunakan untuk menyusun strategi kamu dalam memilih
+    jurusan, adapun data yang kamu serahkan digunakan untuk keperluan internal aplikasi Kampus Ku.
+    Semakin banyak yang berkontribusi dengan nilai UTBK ini, data akan semakin akurat.. Jadi kami sangat berharap
+    kamu dapat memberitahukan teman - teman mu untuk menggunakan aplikasi ini, agar proyeksi bisa semakin akurat
+  </string>
+  <string name="input_utbk">Masukkan Nilai UTBK</string>
+  <string name="lihat_proyeksi">Lihat Proyeksi</string>
+  <string name="nilai_tps">Nilai TPS</string>
+  <string name="nilai_kp_text">Masukkan nilai kemampuan penalaran umum</string>
+  <string name="nilai_pk_text">Masukkan nilai pengetahuan kuantitatif</string>
+  <string name="nilai_ppu_text">Masukkan nilai pengetahuan dan pemahaman umum</string>
+  <string name="nilai_kmbm_text">Masukkan nilai kemampuan memahami bacaan dan menulis</string>
+  <string name="nilai_saintek">Nilai TKA Saintek</string>
+  <string name="nilai_f_text">Masukkan nilai fisika</string>
+  <string name="nilai_ms_text">Masukkan nilai matematika saintek</string>
+  <string name="nilai_k_text">Masukkan nilai kimia</string>
+  <string name="nilai_b_text">Masukkan nilai biologi</string>
+  <string name="nilai_soshum">Nilai TKA Soshum</string>
+  <string name="nilai_ms_sos_text">Masukkan nilai matematika soshum</string>
+  <string name="nilai_g_text">Masukkan nilai geografi</string>
+  <string name="nilai_sejarah_text">Masukkan nilai sejarah</string>
+  <string name="nilai_e_text">Masukkan nilai ekonomi</string>
+  <string name="nilai_s_text">Masukkan nilai sosiologi</string>
+  <string name="submit_nilai_text">Submit Nilai Mu</string>
+  <string name="pilih_kampus1_text">Pilihan Kampus 1</string>
+  <string name="pilih_kampus2_text">Pilihan Kampus 2</string>
+  <string name="peringkat_text">Peringkat</string>
+  <string name="total_pemilih_text">Total Pemilih</string>
+  <string name="content_pilihan">Proyeksi ini hanya sebagai gambaran, agar kamu dapat menyusun strategi pilihan kampus
+    mana yang akan kamu pilih. Untuk hasil resminya silakan tunggu hasil resmi dari LTMPT
+  </string>
+  <string name="rekomendasi_text">Rekomendasi</string>
+  <string name="search">Cari Kampus</string>
+  <string name="coming_soon">Fitur ini akan segera hadir, dalam beberapa minggu.</string>
 </resources>
