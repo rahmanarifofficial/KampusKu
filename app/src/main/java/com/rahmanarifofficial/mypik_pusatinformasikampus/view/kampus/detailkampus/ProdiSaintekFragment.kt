@@ -82,8 +82,10 @@ class ProdiSaintekFragment : Fragment(),
     override fun showDetailProdi(data: List<Prodi>) {
         val kuota = data[0].getDayaTampung2019()!!.toDouble()
         val kuota2018 = data[0].getPeminat2018()!!.toDouble()
-        val persentase = DecimalFormat("#.##").format(kuota / kuota2018 * 100)
-
+        var persentase = "Prodi Baru"
+        if (kuota2018 != 0.0) {
+            persentase = DecimalFormat("#.##").format(kuota / kuota2018 * 100) + " %"
+        }
         var portofolio = data[0].getJenisPortofolio()
         when (portofolio) {
             "1" -> portofolio = "Olahraga"
@@ -104,7 +106,7 @@ class ProdiSaintekFragment : Fragment(),
         tvKuota.text = data[0].getDayaTampung2019()
         tvKuota2018.text = data[0].getPeminat2018()
         tvPortofolio.text = portofolio
-        tvPersentase.text = persentase + " %"
+        tvPersentase.text = persentase
     }
 
     override fun showError(data: String) {

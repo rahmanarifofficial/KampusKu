@@ -13,6 +13,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_kampus.*
+import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
 
 
@@ -20,7 +21,6 @@ class DetailKampusActivity : AppCompatActivity(),
     DetailKampusView {
 
     private lateinit var kode: String
-    private lateinit var tvAkreditas: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +34,13 @@ class DetailKampusActivity : AppCompatActivity(),
 
         setupViewPager(view_pager_prodi)
         tab_prodi.setupWithViewPager(view_pager_prodi)
+        swiperefresh_detail_ptn.onRefresh {
+            KampusPresenter.getPTN(this, kode)
+        }
     }
 
     override fun showPtn(data: List<PTN>) {
+        swiperefresh_detail_ptn.isRefreshing =false
         collapsing_toolbar_detail_kampus.title = data.get(0).getNAMA()
         collapsing_toolbar_detail_kampus.setExpandedTitleColor(Color.parseColor("#44ffffff"))
         tv_akreditasi_detail_ptn.text = data.get(0).getAKREDITASI()
