@@ -1,6 +1,8 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_kampus.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
 
@@ -40,7 +43,7 @@ class DetailKampusActivity : AppCompatActivity(),
     }
 
     override fun showPtn(data: List<PTN>) {
-        swiperefresh_detail_ptn.isRefreshing =false
+        swiperefresh_detail_ptn.isRefreshing = false
         collapsing_toolbar_detail_kampus.title = data.get(0).getNAMA()
         collapsing_toolbar_detail_kampus.setExpandedTitleColor(Color.parseColor("#44ffffff"))
         tv_akreditasi_detail_ptn.text = data.get(0).getAKREDITASI()
@@ -52,6 +55,12 @@ class DetailKampusActivity : AppCompatActivity(),
             Picasso.get().load(data.get(0).getLINKDROP()).placeholder(R.drawable.ic_university_campus).centerCrop()
                 .fit()
                 .into(iv_foto_detail_ptn)
+        }
+        if (!data.get(0).getLINKPMB().isNullOrEmpty()) {
+            btnWebsite.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data.get(0).getLINKPMB()))
+                startActivity(intent)
+            }
         }
     }
 
