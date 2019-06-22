@@ -16,6 +16,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapt
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.DetailKampusActivity
+import kotlinx.android.synthetic.main.fragment_kampus.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.toast

@@ -72,4 +72,17 @@
   <string name="rekomendasi_text">Rekomendasi</string>
   <string name="search">Cari Kampus</string>
   <string name="coming_soon">Fitur ini akan segera hadir, dalam beberapa minggu.</string>
+  <string name="text_empty">Data Belum Tersedia</string>
+  <string name="text_jurusan_populer">Jurusan Paling Populer</string>
+  <string name="text_eksplorasi_jurusan">Eksplorasi Jurusan</string>
+  <string name="text_mapel">Mata Pelajaran Terkait</string>
+  <string name="text_tipe">Tipe Latar</string>
+  <string name="text_popularitas">Popularitas</string>
+  <string name="text_deskripsi">Deskripsi</string>
+  <string name="text_alasanan_memilih">Alasan Kamu Memilih Ini</string>
+  <string name="text_karakter_siswa">Karakter Yang Harus Kamu Miliki</string>
+  <string name="text_prospek_kerja">Prospek Kerja</string>
+  <string name="text_profesi_kerja">Profesi Kerja</string>
+  <string name="text_kelompok">Kelompok</string>
+  <string name="text_universitas">Universitas Yang Membuka</string>
 </resources>

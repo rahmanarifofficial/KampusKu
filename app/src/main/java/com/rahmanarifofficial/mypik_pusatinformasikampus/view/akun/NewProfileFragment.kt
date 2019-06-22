@@ -134,7 +134,7 @@ class NewProfileFragment : Fragment(), NewProfileView {
                 val foto = data.data
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, foto)
-                    val path = saveImage(bitmap)
+//                    val path = saveImage(bitmap)
                     toast("Image Saved")
                     iv_foto_profil_new_akun!!.setImageBitmap(bitmap)
                 } catch (e: IOException) {

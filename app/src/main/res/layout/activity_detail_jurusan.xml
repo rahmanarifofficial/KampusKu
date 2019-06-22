@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swiperefresh_detail_jurusan"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="wrap_content"
+        tools:context=".view.trend.DetailJurusanActivity">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_kelompok"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_kelompok_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_tipe"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_tipe_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_mapel"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_mapel_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_deskripsi"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_deskripsi_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_alasanan_memilih"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_alasan_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_karakter_siswa"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_karakter_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:lineSpacingExtra="10dp"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_prospek_kerja"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_prospek_kerja_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_profesi_kerja"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_profesi_kerja_detail_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:lineSpacingExtra="10dp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_universitas"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/rv_list_ptn_jurusan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+    </LinearLayout>
+  </ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

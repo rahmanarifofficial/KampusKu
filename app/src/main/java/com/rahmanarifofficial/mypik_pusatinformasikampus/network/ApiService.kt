@@ -1,5 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.network
 
+import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
@@ -24,6 +25,12 @@ interface ApiService {
 
     @GET("index.php/api/universitas/prodi_ptn")
     fun getDetailProdi(@Query("kode_prodi") kode: String): Call<List<Prodi>>
+
+    @GET("index.php/api/universitas/jurusan?isPopuler=true")
+    fun getPopulerJurusan(): Call<List<Jurusan>>
+
+    @GET("index.php/api/universitas/detail_jurusan/{id}")
+    fun getDetailJurusan(@Path("id") id: String): Call<List<Jurusan>>
 
     @POST("index.php/api/universitas/pengguna")
     @FormUrlEncoded
