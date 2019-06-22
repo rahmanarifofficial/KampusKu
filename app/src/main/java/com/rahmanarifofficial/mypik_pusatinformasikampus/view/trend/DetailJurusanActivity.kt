@@ -3,6 +3,7 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.MenuItem
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter
@@ -15,6 +16,7 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         setContentView(R.layout.activity_detail_jurusan)
         val id = intent.getStringExtra("kode")
         TrendPresenter.showDetailJurusan(id, this)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun showLoading() {
@@ -28,6 +30,7 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
     override fun showJurusan(data: List<Jurusan>) {
         if (!data.isNullOrEmpty()) {
             swiperefresh_detail_jurusan.isRefreshing = false
+            supportActionBar?.title = data[0].jurusan
             tv_kelompok_detail_jurusan.text = data[0].namaKelompok
             tv_tipe_detail_jurusan.text = data[0].tipe
             tv_mapel_detail_jurusan.text = data[0].mapel
@@ -58,5 +61,14 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         Log.d("TAGERROR", data)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

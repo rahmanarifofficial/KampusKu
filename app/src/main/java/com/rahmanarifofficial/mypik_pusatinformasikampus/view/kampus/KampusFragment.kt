@@ -11,6 +11,7 @@ import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
 import android.widget.ProgressBar
+import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
@@ -32,6 +33,7 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        (activity as MainActivity).setActionBarTitle(getString(R.string.text_kampus))
         val v = inflater.inflate(R.layout.fragment_kampus, container, false)
         pb_ptn = v.findViewById(R.id.pb_ptn)
         swiperefresh_ptn = v.findViewById(R.id.swiperefresh_ptn)
@@ -71,15 +73,11 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         pb_ptn.visibility = View.INVISIBLE
     }
 
-    override fun showPtnList(data: List<PTN>?) {
+    override fun showPtnList(data: List<PTN>) {
         swiperefresh_ptn.isRefreshing = false
-        if (!data.isNullOrEmpty()) {
-            ptnList.clear()
-            ptnList.addAll(data)
-            adapter.notifyDataSetChanged()
-            Log.d("TAGERROR", data.toString())
-            Log.d("TAGERROR", data.get(0).getWORLDRANK())
-        }
+        ptnList.clear()
+        ptnList.addAll(data)
+        adapter.notifyDataSetChanged()
     }
 
     override fun showError(error: String) {

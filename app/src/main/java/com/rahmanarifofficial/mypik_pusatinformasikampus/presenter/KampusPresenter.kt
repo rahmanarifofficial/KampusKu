@@ -41,7 +41,7 @@ class KampusPresenter() {
                 }
 
                 override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
-                    view.showPtnList(response.body())
+                    view.showPtnList(response.body()!!)
                     view.hideLoading()
                 }
             })

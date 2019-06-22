@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
@@ -30,9 +31,8 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener, AkunView {
     private lateinit var fieldPassword: EditText
     private lateinit var pbAuth: ProgressBar
 
-    val TAG = "TESTAPI"
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        (activity as MainActivity).setActionBarTitle(getString(R.string.text_auth))
         val v = inflater.inflate(R.layout.fragment_authentikasi, container, false)
         fieldEmail = v.findViewById(R.id.et_email)
         fieldPassword = v.findViewById(R.id.et_password)

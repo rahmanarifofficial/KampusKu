@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
@@ -36,6 +37,7 @@ class NewProfileFragment : Fragment(), NewProfileView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        (activity as MainActivity).setActionBarTitle(getString(R.string.buat_akun))
         return inflater.inflate(R.layout.fragment_new_profile, container, false)
     }
 

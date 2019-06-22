@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
@@ -26,6 +27,7 @@ class InputUTBKFragment : Fragment(), AdapterView.OnItemSelectedListener, InputU
     private lateinit var map: HashMap<String, String>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        (activity as MainActivity).setActionBarTitle(getString(R.string.text_input))
         return inflater.inflate(R.layout.fragment_input_utbk, container, false)
     }
 

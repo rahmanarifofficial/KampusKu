@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.inflateMenu(R.menu.menu_bottom_navigation);
         fragmentManager = supportFragmentManager;
 
-        fragmentManager.beginTransaction().replace(R.id.main_container,
+        fragmentManager.beginTransaction().replace(
+            R.id.main_container,
             KampusFragment()
         ).commit()
 
@@ -45,5 +46,9 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
             true
         }
+    }
+
+    fun setActionBarTitle(title: String) {
+        supportActionBar!!.title = title
     }
 }

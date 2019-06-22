@@ -85,4 +85,13 @@
   <string name="text_profesi_kerja">Profesi Kerja</string>
   <string name="text_kelompok">Kelompok</string>
   <string name="text_universitas">Universitas Yang Membuka</string>
+  <string name="text_beasiswa">Beasiswa</string>
+  <string name="text_kampus">Daftar Kampus</string>
+  <string name="text_trend"><![CDATA[Tren & Eksplorasi Jurusan]]></string>
+  <string name="text_profil">Profil</string>
+  <string name="buat_akun">Buat Akun</string>
+  <string name="text_auth">Masuk</string>
+  <string name="text_input">Form Nilai</string>
+  <string name="text_hasil_proyeksi">Hasil Proyeksi</string>
+  <string name="search_jurusan">Cari Jurusan</string>
 </resources>

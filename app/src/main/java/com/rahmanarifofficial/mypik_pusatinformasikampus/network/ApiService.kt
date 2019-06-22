@@ -35,6 +35,9 @@ interface ApiService {
     @GET("index.php/api/universitas/detail_jurusan/{id}")
     fun getDetailJurusan(@Path("id") id: String): Call<List<Jurusan>>
 
+    @GET("index.php/api/universitas/jurusan")
+    fun getSearchJurusan(@Query("jurusan") jurusan: String): Call<List<Jurusan>>
+
     @POST("index.php/api/universitas/pengguna")
     @FormUrlEncoded
     fun insertPengguna(
