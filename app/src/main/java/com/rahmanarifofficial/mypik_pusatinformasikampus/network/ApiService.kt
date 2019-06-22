@@ -29,6 +29,9 @@ interface ApiService {
     @GET("index.php/api/universitas/jurusan?isPopuler=true")
     fun getPopulerJurusan(): Call<List<Jurusan>>
 
+    @GET("index.php/api/universitas/jurusan")
+    fun getJurusanList(@Query("id_kelompok") id_kelompok: Int): Call<List<Jurusan>>
+
     @GET("index.php/api/universitas/detail_jurusan/{id}")
     fun getDetailJurusan(@Path("id") id: String): Call<List<Jurusan>>
 

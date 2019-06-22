@@ -1,7 +1,5 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,22 +7,38 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
+import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanPopulerListAdapter
-import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
-import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.DetailKampusActivity
 import kotlinx.android.synthetic.main.fragment_trend.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.support.v4.toast
 
-class TrendFragment : Fragment(), TrendView {
+class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener {
+
     private lateinit var adapter: JurusanPopulerListAdapter
+    private lateinit var adapterJurusan: JurusanListAdapter
 
+    private var jurusanPopulerList: MutableList<Jurusan> = mutableListOf()
     private var jurusanList: MutableList<Jurusan> = mutableListOf()
+    private val kelompok = arrayOf(
+        "Budaya & Bahasa",
+        "Ekonomi & Bisnis",
+        "Kesehatan",
+        "Pendidikan",
+        "Pertanian",
+        "Science",
+        "Seni",
+        "Sosial Humaniora",
+        "Teknik",
+        "Komputer & Teknologi",
+        "Profesi & Ilmu Terapan"
+    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -34,7 +48,7 @@ class TrendFragment : Fragment(), TrendView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         TrendPresenter.showPopulerJurusan(this)
-        adapter = JurusanPopulerListAdapter(jurusanList) {
+        adapter = JurusanPopulerListAdapter(jurusanPopulerList) {
             activity?.startActivity<DetailJurusanActivity>("kode" to "${it.id}")
         }
         rv_list_jurusan_populer.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -42,6 +56,15 @@ class TrendFragment : Fragment(), TrendView {
         swiperefresh_trend.onRefresh {
             TrendPresenter.showPopulerJurusan(this)
         }
+        spinadapter = ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_dropdown_item, kelompok)
+        spinner_kelompok_jurusan.adapter = spinadapter
+        spinner_kelompok_jurusan.setOnItemSelectedListener(this)
+        adapterJurusan = JurusanListAdapter(jurusanList) {
+            activity?.startActivity<DetailJurusanActivity>("kode" to "${it.id}")
+        }
+        rv_list_jurusan.layoutManager = LinearLayoutManager(activity)
+        rv_list_jurusan.adapter = adapterJurusan
+
     }
 
     override fun showLoading() {
@@ -54,15 +77,34 @@ class TrendFragment : Fragment(), TrendView {
 
     override fun showPopulerJurusan(data: List<Jurusan>) {
         if (!data.isNullOrEmpty()) {
+            jurusanPopulerList.clear()
+            jurusanPopulerList.addAll(data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private lateinit var spinadapter: ArrayAdapter<String>
+
+    override fun showJurusanList(data: List<Jurusan>) {
+        if (!data.isNullOrEmpty()) {
+            Log.d("TAGTEST", data[0].jurusan)
             jurusanList.clear()
             jurusanList.addAll(data)
-            adapter.notifyDataSetChanged()
+            adapterJurusan.notifyDataSetChanged()
         }
 
     }
 
     override fun showError(data: String) {
         Log.d("TAGERROR", data)
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        TrendPresenter.getListJurusan(position + 1, this);
     }
 
 }

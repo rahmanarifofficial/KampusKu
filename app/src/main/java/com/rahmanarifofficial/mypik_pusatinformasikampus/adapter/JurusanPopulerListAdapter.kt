@@ -25,12 +25,12 @@ class JurusanPopulerListAdapter(private var jurusan: List<Jurusan>, private val 
 
     class JurusanViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindJurusan(jurusan: Jurusan, listener: (Jurusan) -> Unit) {
-            itemView.tv_nama_jurusan.text = jurusan.jurusan
-            itemView.tv_kelompok_jurusan.text = jurusan.namaKelompok
-            itemView.tv_mapel_jurusan.text = jurusan.mapel
-            itemView.tv_tipe_jurusan.text = jurusan.tipe
+            itemView.tv_nama_jurusan_populer.text = jurusan.jurusan
+            itemView.tv_kelompok_jurusan_populer.text = jurusan.namaKelompok
+            itemView.tv_mapel_jurusan_populer.text = jurusan.mapel
+            itemView.tv_tipe_jurusan_populer.text = jurusan.tipe
             itemView.tv_popularitas_jurusan.text = jurusan.isPopuler
-            if (jurusan.fotoBanner != null) {
+            if (!jurusan.fotoBanner.isNullOrEmpty()) {
                 Picasso.get()
                     .load(jurusan.fotoBanner!!)
                     .centerCrop()

@@ -3,7 +3,6 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter

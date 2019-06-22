@@ -44,5 +44,22 @@ class TrendPresenter() {
                 }
             })
         }
+
+        fun getListJurusan(id: Int, view: TrendView){
+            view.showLoading()
+            val apiService = ApiBuilder.getClient()?.create(ApiService::class.java)
+            val call = apiService?.getJurusanList(id)
+            call?.enqueue(object : Callback<List<Jurusan>>{
+                override fun onFailure(call: Call<List<Jurusan>>, t: Throwable) {
+                    view.showError(t.message!!)
+                    view.hideLoading()
+                }
+
+                override fun onResponse(call: Call<List<Jurusan>>, response: Response<List<Jurusan>>) {
+                    view.showJurusanList(response.body()!!)
+                    view.hideLoading()
+                }
+            })
+        }
     }
 }

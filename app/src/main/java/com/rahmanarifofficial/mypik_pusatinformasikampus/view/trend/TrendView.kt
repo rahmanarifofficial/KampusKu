@@ -6,5 +6,6 @@ interface TrendView {
     fun showLoading()
     fun hideLoading()
     fun showPopulerJurusan(data: List<Jurusan>)
+    fun showJurusanList(data: List<Jurusan>)
     fun showError(data: String)
 }

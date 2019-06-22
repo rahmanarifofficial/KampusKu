@@ -14,14 +14,14 @@
       android:layout_marginBottom="8dp"/>
 
   <TextView
-      android:id="@+id/tv_nama_jurusan"
+      android:id="@+id/tv_nama_jurusan_populer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:fontFamily="@font/neosansblack"
       android:textSize="16sp"
       android:layout_marginBottom="5dp"/>
   <TextView
-      android:id="@+id/tv_kelompok_jurusan"
+      android:id="@+id/tv_kelompok_jurusan_populer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textSize="13sp"
@@ -44,12 +44,11 @@
           android:layout_height="0dp"
           android:textStyle="bold"
           android:layout_weight="1"
-          android:textAlignment="center"
-          android:layout_marginBottom="6dp"/>
+          android:layout_marginBottom="8dp"/>
 
       <TextView
           android:layout_margin="8dp"
-          android:id="@+id/tv_mapel_jurusan"
+          android:id="@+id/tv_mapel_jurusan_populer"
           android:textSize="12sp"
           android:layout_width="match_parent"
           android:layout_height="0dp"
@@ -67,16 +66,15 @@
         android:weightSum="2">
       <TextView
           android:text="@string/text_tipe"
-          android:textAlignment="center"
           android:textSize="12sp"
           android:textStyle="bold"
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="1"
-          android:layout_marginBottom="6dp"/>
+          android:layout_margin="8dp"/>
 
       <TextView
-          android:id="@+id/tv_tipe_jurusan"
+          android:id="@+id/tv_tipe_jurusan_populer"
           android:textSize="12sp"
           android:layout_margin="8dp"
           android:layout_weight="1"
@@ -95,13 +93,12 @@
         android:orientation="vertical">
       <TextView
           android:text="@string/text_popularitas"
-          android:textAlignment="center"
           android:textSize="12sp"
           android:layout_width="match_parent"
           android:textStyle="bold"
           android:layout_height="0dp"
           android:layout_weight="1"
-          android:layout_marginBottom="6dp"/>
+          android:layout_margin="8dp"/>
 
       <TextView
           android:layout_margin="8dp"
