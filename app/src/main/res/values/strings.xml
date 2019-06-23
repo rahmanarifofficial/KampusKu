@@ -106,4 +106,22 @@
   <string name="tentang_text">Tentang Aplikasi</string>
   <string name="detail_profile">Detail Profil</string>
   <string name="edit_profile">Edit Profile</string>
+  <string name="content_about">Aplikasi ini digunakan untuk para siswa menemukan kampus - kampus
+    Perguruan Tinggi Negeri (PTN), mengetahui informasi kampus dan jurusan - jurusan yang berada disana,
+    Aplikasi ini juga akan memberikan informasi beasiswa untuk para siswa tersebut. Aplikasi ini
+    dilengkapi fitur proyeksi SBMPTN dengan referensi perhitungan yang sudah divalidasi. Kedepannya
+    Aplikasi ini akan menyediakan fitur review kampus dan jurusan serta Daftar Pekerjaan. Selain itu
+    Aplikasi ini akan menyediakan fitur untuk test psikologi sehingga akan ada sistem rekomendasi jurusan
+    berdasarkan hasil testnya.
+  </string>
+  <string name="tentang_data_text">Tentang Data</string>
+  <string name="content_data_about">Data bersumber dari data sekunder namun tetap dari instansi
+    resmi dan valid. Data sekunder merupakan data yang diperoleh dari sumber yang sudah ada. Data
+    tersebut diambil dari data yang ada di website sbmptn.ltmpt.ac.id dan banpt.or.id
+  </string>
+  <string name="tentang_developer_text">Tentang Developer</string>
+  <string name="content_developer_about">Developer merupakan seorang Mahasiswa di Universitas Brawijaya\nUntuk
+    lebih lengkapnya bisa berkunjung melalui instagram ataupun facebook rahmanarifofficial\nUntuk
+    keperluan bisnis lainnya dapat menghubungi email rahmanarifofficial@gmail.com</string>
+  <string name="hubungi_developer">Hubungi Developer</string>
 </resources>

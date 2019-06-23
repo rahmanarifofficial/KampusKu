@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@android:color/white"
+      android:padding="16dp"
+      android:orientation="vertical"
+      tools:context=".view.akun.AboutActivity">
+
+    <TextView
+        android:textSize="16sp"
+        android:fontFamily="@font/neosansblack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/tentang_text"/>
+
+    <TextView
+        android:textSize="15sp"
+        android:text="@string/content_about"
+        android:lineSpacingExtra="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:fontFamily="@font/neosansblack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/tentang_data_text"/>
+
+    <TextView
+        android:textSize="15sp"
+        android:text="@string/content_data_about"
+        android:lineSpacingExtra="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:fontFamily="@font/neosansblack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/tentang_developer_text"/>
+
+    <TextView
+        android:textSize="15sp"
+        android:text="@string/content_developer_about"
+        android:lineSpacingExtra="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_contact_developer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hubungi_developer"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"/>
+  </LinearLayout>
+</ScrollView>

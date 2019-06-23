@@ -100,6 +100,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
             R.id.help_profile -> {
             }
             R.id.about_profile -> {
+                startActivity<AboutActivity>()
             }
             R.id.logout_profile -> {
                 auth.signOut()
