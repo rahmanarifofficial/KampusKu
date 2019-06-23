@@ -7,6 +7,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiBuilder
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiService
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.DateTimeNow
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AkunView
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.ProfileView
@@ -53,7 +54,8 @@ class AkunPresenter {
             alamat: String, sekolah: String, instagram: String?, facebook: String?, foto: Uri
         ) {
             view.showProgress()
-            val storageRef = FirebaseStorage.getInstance().getReference("pengguna");
+            val storageRef = FirebaseStorage.getInstance()
+                .getReference("pengguna/" + email + DateTimeNow.DATENOW() + DateTimeNow.TIMENOW());
             storageRef.putFile(foto)
                 .addOnSuccessListener {
                     storageRef.downloadUrl.addOnSuccessListener {

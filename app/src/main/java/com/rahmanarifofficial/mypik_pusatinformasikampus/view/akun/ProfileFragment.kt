@@ -15,11 +15,22 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
+import org.jetbrains.anko.support.v4.startActivity
 
 
-class ProfileFragment : Fragment(), ProfileView {
+class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var loginPrefs: LoginPreferences
+    private lateinit var nama: String
+    private lateinit var email: String
+    private lateinit var alamat: String
+    private lateinit var asalSekolah: String
+    private lateinit var facebook: String
+    private lateinit var instagram: String
+    private lateinit var noTelp: String
+    private lateinit var foto: String
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_profil))
         return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -29,44 +40,37 @@ class ProfileFragment : Fragment(), ProfileView {
         super.onActivityCreated(savedInstanceState)
 
         val prefs = AuthPreferences(activity!!)
-        val loginPrefs = LoginPreferences(activity!!)
+        loginPrefs = LoginPreferences(activity!!)
         val email = prefs.getEmail()
         val password = prefs.getPassword()
 
         auth = FirebaseAuth.getInstance()
 
         AkunPresenter.getPengguna(this, email, password)
-        btnBantuan.setOnClickListener {
-
-        }
-        btnLogout.setOnClickListener {
-            auth.signOut()
-            loginPrefs.setWasLogin(false)
-            val fm = fragmentManager
-            val ft = fm!!.beginTransaction()
-            ft.replace(R.id.main_container, AuthentikasiFragment())
-            ft.commit()
-        }
+        info_profile.setOnClickListener(this)
+        about_profile.setOnClickListener(this)
+        help_profile.setOnClickListener(this)
+        logout_profile.setOnClickListener(this)
     }
 
     override fun showProfil(data: List<Pengguna>) {
-        text_alamat.visibility = View.VISIBLE
-        text_asal_sekolah.visibility = View.VISIBLE
-        text_telepon.visibility = View.VISIBLE
-        gambar_facebook.visibility = View.VISIBLE
-        gambar_instagram.visibility = View.VISIBLE
-        btnBantuan.visibility = View.VISIBLE
-        btnLogout.visibility = View.VISIBLE
-        tv_nama_akun.text = data[0].namaPengguna
-        tv_alamat_akun.text = data[0].alamatPengguna
-        tv_asal_sekolah_akun.text = data[0].asal_sekolah
-        tv_email_akun.text = data[0].emailPengguna
-        tv_facebook_akun.text = data[0].facebook
-        tv_intagram_akun.text = data[0].instagram
-        tv_no_telp_akun.text = data[0].no_telp
-        Picasso.get().load(data[0].linkFoto).placeholder(R.drawable.ic_user_avatar).centerCrop().fit()
-            .into(iv_foto_profil_akun)
+        nama = data[0].namaPengguna!!
+        email = data[0].emailPengguna!!
+        alamat = data[0].alamatPengguna!!
+        asalSekolah = data[0].asal_sekolah!!
+        facebook = data[0].facebook!!
+        instagram = data[0].instagram!!
+        noTelp = data[0].no_telp!!
+        foto = data[0].linkFoto!!
+
+        tv_info_nama_akun.text = nama
+        tv_info_email_akun.text = email
+        if (!data[0].linkFoto.isNullOrEmpty()) {
+            Picasso.get().load(foto).placeholder(R.drawable.ic_user_avatar).centerCrop().fit()
+                .into(iv_info_foto_profil_akun)
+        }
     }
+
 
     override fun showToast(data: String) {
         Log.d("TAGERROR", data)
@@ -77,6 +81,35 @@ class ProfileFragment : Fragment(), ProfileView {
         val ft = fm!!.beginTransaction()
         ft.replace(R.id.main_container, NewProfileFragment())
         ft.commit()
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.info_profile -> {
+                startActivity<DetailProfilActivity>(
+                    "nama" to nama,
+                    "email" to email,
+                    "alamat" to alamat,
+                    "asal" to asalSekolah,
+                    "facebook" to facebook,
+                    "instagram" to instagram,
+                    "noTelp" to noTelp,
+                    "foto" to foto
+                )
+            }
+            R.id.help_profile -> {
+            }
+            R.id.about_profile -> {
+            }
+            R.id.logout_profile -> {
+                auth.signOut()
+                loginPrefs.setWasLogin(false)
+                val fm = fragmentManager
+                val ft = fm!!.beginTransaction()
+                ft.replace(R.id.main_container, AuthentikasiFragment())
+                ft.commit()
+            }
+        }
     }
 
 }
