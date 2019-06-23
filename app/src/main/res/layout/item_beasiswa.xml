@@ -19,7 +19,8 @@
     <ImageView
         android:id="@+id/iv_foto_banner_beasiswa"
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/tv_nama_beasiswa"
@@ -30,7 +31,7 @@
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/tv_nama_penyelenggara"
+        android:id="@+id/tv_nama_penyelenggara_beasiswa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"

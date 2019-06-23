@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swiperefresh_detail_beasiswa"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="wrap_content"
+        tools:context=".view.trend.DetailJurusanActivity">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_penyelenggara"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_nama_penyelenggara_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_pembiayaan"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_jenis_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_deadline"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_deadline_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_kategori"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_kategori_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:layout_marginLeft="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_deskripsi"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_deskripsi_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_komponen_beasiswa"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_komponen_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_syarat_daftar"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_syarat_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:lineSpacingExtra="10dp"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_berkas"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_berkas_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/text_cara_daftar"
+          android:textSize="16sp"
+          android:layout_marginBottom="10dp"
+          android:fontFamily="@font/neosansblack"/>
+
+      <TextView
+          android:id="@+id/tv_proses_detail_beasiswa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textSize="13sp"
+          android:lineSpacingExtra="10dp"
+          android:background="@drawable/background_content"
+          android:padding="10dp"
+          android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+  </ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

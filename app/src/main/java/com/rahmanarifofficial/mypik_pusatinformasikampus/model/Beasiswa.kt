@@ -31,6 +31,12 @@ data class Beasiswa(
     @SerializedName("berkas_pendaftaran")
     @Expose
     var berkasPendaftaran: String? = null,
+    @SerializedName("link_banner")
+    @Expose
+    var linkBanner: String? = null,
+    @SerializedName("penyelenggara")
+    @Expose
+    var penyelenggara: String? = null,
     @SerializedName("proses_pendaftaran")
     @Expose
     var prosesPendaftaran: String? = null

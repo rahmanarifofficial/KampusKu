@@ -97,4 +97,9 @@
   <string name="text_deadline">Batas Daftar</string>
   <string name="text_kategori">Kategori</string>
   <string name="text_pembiayaan">Jenis</string>
+  <string name="text_penyelenggara">Penyelenggara</string>
+  <string name="text_komponen_beasiswa">Komponen Beasiswa</string>
+  <string name="text_syarat_daftar">Persyaratan Pendaftar</string>
+  <string name="text_berkas">Berkas Yang Diperlukan</string>
+  <string name="text_cara_daftar">Proses Pendaftaran</string>
 </resources>

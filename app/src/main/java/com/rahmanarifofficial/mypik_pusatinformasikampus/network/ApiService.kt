@@ -1,9 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.network
 
-import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
-import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
-import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
-import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
+import com.rahmanarifofficial.mypik_pusatinformasikampus.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -40,6 +37,15 @@ interface ApiService {
 
     @GET("index.php/api/universitas/jurusan")
     fun getSearchJurusan(@Query("jurusan") jurusan: String): Call<List<Jurusan>>
+
+    @GET("index.php/api/universitas/beasiswa")
+    fun getBeasiswaList(): Call<List<Beasiswa>>
+
+    @GET("index.php/api/universitas/beasiswa")
+    fun getSearchBeasiswa(@Query("beasiswa") beasiswa: String): Call<List<Beasiswa>>
+
+    @GET("index.php/api/universitas/detail_beasiswa/{id}")
+    fun getDetailBeasiswa(@Path("id") id: String): Call<List<Beasiswa>>
 
     @POST("index.php/api/universitas/pengguna")
     @FormUrlEncoded
