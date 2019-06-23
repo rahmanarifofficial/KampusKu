@@ -1,7 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -16,11 +15,8 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
-import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus.DetailKampusActivity
-import kotlinx.android.synthetic.main.fragment_kampus.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.support.v4.toast
 
 class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
 

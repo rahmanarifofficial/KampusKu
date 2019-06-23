@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,16 +8,13 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
-import android.widget.TextView
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.ProdiPagerAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_kampus.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.toast
 
 
 class DetailKampusActivity : AppCompatActivity(),
@@ -83,11 +80,15 @@ class DetailKampusActivity : AppCompatActivity(),
         val adapter = ProdiPagerAdapter(supportFragmentManager)
 
         val saintek =
-            ProdiSaintekFragment.saintekIntance(kode)
+            ProdiSaintekFragment.saintekIntance(
+                kode
+            )
         adapter.addFragment(saintek, "SAINTEK")
 
         val soshum =
-            ProdiSoshumFragment.soshumIntance(kode)
+            ProdiSoshumFragment.soshumIntance(
+                kode
+            )
         adapter.addFragment(soshum, "SOSHUM")
 
         pager.adapter = adapter

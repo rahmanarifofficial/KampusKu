@@ -31,6 +31,12 @@ class Prodi {
     @SerializedName("akreditasi")
     @Expose
     private var akreditasi: String? = null
+    @SerializedName("link_pmb")
+    @Expose
+    private var link_pmb: String? = null
+    @SerializedName("link_logo")
+    @Expose
+    private var link_logo: String? = null
 
     fun getKodePtn(): String? {
         return kodePtn
@@ -103,4 +109,21 @@ class Prodi {
     fun setAkreditasi(akreditasi: String) {
         this.akreditasi = akreditasi
     }
+
+    fun getLinkPMB(): String? {
+        return link_pmb
+    }
+
+    fun setLINKPMB(lINKPMB: String) {
+        this.link_pmb = lINKPMB
+    }
+
+    fun getLinkLogo(): String? {
+        return link_logo
+    }
+
+    fun setLINKLOGO(lINKLOGO: String) {
+        this.link_logo = lINKLOGO
+    }
+
 }

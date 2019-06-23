@@ -1,4 +1,5 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.detailkampus
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
+
 
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
@@ -10,14 +11,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.ProdiKampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
-import org.jetbrains.anko.support.v4.toast
 import java.text.DecimalFormat
 
-class ProdiSaintekFragment : Fragment(),
+class ProdiSoshumFragment : Fragment(),
     ProdiKampusView {
 
     private lateinit var list_prodi_ptn: RecyclerView
@@ -34,9 +35,9 @@ class ProdiSaintekFragment : Fragment(),
     private var prodiList: MutableList<Prodi> = mutableListOf()
 
     companion object {
-        fun saintekIntance(kode: String): ProdiSaintekFragment {
+        fun soshumIntance(kode: String): ProdiSoshumFragment {
             val fragment =
-                ProdiSaintekFragment()
+                ProdiSoshumFragment()
             val args = Bundle()
             args.putString("kode", kode)
             fragment.arguments = args
@@ -44,16 +45,20 @@ class ProdiSaintekFragment : Fragment(),
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_prodi_saintek, container, false)
-        list_prodi_ptn = v.findViewById(R.id.rv_list_prodi_saintek)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val v = inflater.inflate(R.layout.fragment_prodi_soshum, container, false)
+        list_prodi_ptn = v.findViewById(R.id.rv_list_prodi_soshum)
         return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val kode = arguments?.getString("kode")
-        KampusPresenter.getProdiList(this, kode!!, "'saintek'")
+        KampusPresenter.getProdiList(this, kode!!, "'soshum'")
         adapter = ProdiKampusListAdapter(prodiList) {
             KampusPresenter.getDetailProdi(this, "${it.getKodeProdi()}")
             val view = layoutInflater.inflate(R.layout.dialog_detail_prodi, null)
@@ -86,6 +91,7 @@ class ProdiSaintekFragment : Fragment(),
         if (kuota2018 != 0.0) {
             persentase = DecimalFormat("#.##").format(kuota / kuota2018 * 100) + " %"
         }
+
         var portofolio = data[0].getJenisPortofolio()
         when (portofolio) {
             "1" -> portofolio = "Olahraga"
@@ -110,6 +116,7 @@ class ProdiSaintekFragment : Fragment(),
     }
 
     override fun showError(data: String) {
-        Log.d("TAGERROR", data)
+        Log.d("TAGERROR",data)
     }
+
 }

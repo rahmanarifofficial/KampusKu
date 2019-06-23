@@ -24,6 +24,9 @@ interface ApiService {
     fun getProdiListByPTN(@Query("kode_ptn") kode: String): Call<List<Prodi>>
 
     @GET("index.php/api/universitas/prodi_ptn")
+    fun getProdiListByName(@Query("nama") nama: String): Call<List<Prodi>>
+
+    @GET("index.php/api/universitas/prodi_ptn")
     fun getDetailProdi(@Query("kode_prodi") kode: String): Call<List<Prodi>>
 
     @GET("index.php/api/universitas/jurusan?isPopuler=true")

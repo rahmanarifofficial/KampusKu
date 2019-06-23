@@ -1,4 +1,4 @@
-package com.rahmanarifofficial.mypik_pusatinformasikampus.view
+package com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa
 
 import android.content.Context
 import android.net.Uri
@@ -13,13 +13,15 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 
 class BeasiswaFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_beasiswa))
         return inflater.inflate(R.layout.fragment_beasiswa, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
     }
 
 }

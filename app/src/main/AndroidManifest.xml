@@ -16,7 +16,7 @@
     <activity android:name=".view.trend.DetailJurusanActivity">
     </activity>
     <activity
-        android:name=".view.kampus.detailkampus.DetailKampusActivity"
+        android:name=".view.kampus.DetailKampusActivity"
         android:theme="@style/NoAppTheme">
     </activity>
     <activity android:name=".MainActivity">

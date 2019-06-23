@@ -2,14 +2,23 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
+import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanKampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
+import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.DetailKampusActivity
 import kotlinx.android.synthetic.main.activity_detail_jurusan.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.onRefresh
 
 class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
+
+    private lateinit var adapter: JurusanKampusListAdapter
+    private var prodiList: MutableList<Prodi> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +26,15 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         val id = intent.getStringExtra("kode")
         TrendPresenter.showDetailJurusan(id, this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        adapter = JurusanKampusListAdapter(prodiList) {
+            startActivity<DetailKampusActivity>("kode" to "${it.getKodePtn()}")
+        }
+        rv_list_ptn_jurusan.layoutManager = LinearLayoutManager(this)
+        rv_list_ptn_jurusan.adapter = adapter
+        swiperefresh_detail_jurusan.onRefresh {
+            TrendPresenter.showDetailJurusan(id, this)
+        }
+
     }
 
     override fun showLoading() {
@@ -30,6 +48,7 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
     override fun showJurusan(data: List<Jurusan>) {
         if (!data.isNullOrEmpty()) {
             swiperefresh_detail_jurusan.isRefreshing = false
+            TrendPresenter.showJurusanPTN(data[0].jurusan!!, this)
             supportActionBar?.title = data[0].jurusan
             tv_kelompok_detail_jurusan.text = data[0].namaKelompok
             tv_tipe_detail_jurusan.text = data[0].tipe
@@ -55,6 +74,13 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
                 tv_profesi_kerja_detail_jurusan.text = getString(R.string.text_empty)
             }
         }
+    }
+
+    override fun showUniv(data: List<Prodi>) {
+        prodiList.clear()
+        prodiList.addAll(data)
+        adapter.notifyDataSetChanged()
+
     }
 
     override fun showError(data: String) {

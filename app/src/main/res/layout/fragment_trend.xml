@@ -17,7 +17,6 @@
         android:padding="16dp">
 
       <TextView
-          android:id="@+id/trens"
           android:layout_width="match_parent" android:layout_height="wrap_content"
           android:text="@string/text_jurusan_populer"
           android:textSize="16sp"
