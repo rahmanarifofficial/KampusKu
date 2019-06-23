@@ -98,6 +98,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
                 )
             }
             R.id.help_profile -> {
+                startActivity<BantuanActivity>()
             }
             R.id.about_profile -> {
                 startActivity<AboutActivity>()
