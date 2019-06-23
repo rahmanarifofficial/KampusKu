@@ -3,10 +3,9 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.BeasiswaListAdapter
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_beasiswa.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
-class BeasiswaFragment : Fragment(), BeasiswaView {
+class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
 
     private lateinit var adapter: BeasiswaListAdapter
 
@@ -30,6 +29,7 @@ class BeasiswaFragment : Fragment(), BeasiswaView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setHasOptionsMenu(true)
         BeasiswaPresenter.showBeasiswa(this)
         adapter = BeasiswaListAdapter(beasiswaList) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
@@ -41,6 +41,16 @@ class BeasiswaFragment : Fragment(), BeasiswaView {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_home, menu)
+        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
+        searchView.queryHint = getString(R.string.search_beasiswa)
+        searchView.setOnQueryTextListener(this)
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
     override fun showLoading() {
         swiperefresh_beasiswa.isRefreshing = true
     }
@@ -50,6 +60,7 @@ class BeasiswaFragment : Fragment(), BeasiswaView {
     }
 
     override fun showBeasiswa(data: List<Beasiswa>) {
+        swiperefresh_beasiswa.isRefreshing = false
         beasiswaList.clear()
         beasiswaList.addAll(data)
         adapter.notifyDataSetChanged()
@@ -57,6 +68,20 @@ class BeasiswaFragment : Fragment(), BeasiswaView {
 
     override fun showError(data: String) {
         Log.d("TAGERROR", data)
+    }
+
+    override fun onQueryTextSubmit(p0: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        if (p0!!.isNotEmpty()) {
+            BeasiswaPresenter.searchBeasiswa(this, p0)
+        } else {
+            BeasiswaPresenter.showBeasiswa(this)
+        }
+        return false
+
     }
 
 }

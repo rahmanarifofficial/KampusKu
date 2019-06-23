@@ -41,7 +41,7 @@ interface ApiService {
     @GET("index.php/api/universitas/beasiswa")
     fun getBeasiswaList(): Call<List<Beasiswa>>
 
-    @GET("index.php/api/universitas/beasiswa")
+    @GET("index.php/api/universitas/search_beasiswa")
     fun getSearchBeasiswa(@Query("beasiswa") beasiswa: String): Call<List<Beasiswa>>
 
     @GET("index.php/api/universitas/detail_beasiswa/{id}")
