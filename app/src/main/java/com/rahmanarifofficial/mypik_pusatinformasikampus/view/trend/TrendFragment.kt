@@ -15,6 +15,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanPopulerL
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter
+import kotlinx.android.synthetic.main.fragment_kampus.*
 import kotlinx.android.synthetic.main.fragment_trend.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
@@ -67,18 +68,23 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
         }
         rv_list_jurusan.layoutManager = LinearLayoutManager(activity)
         rv_list_jurusan.adapter = adapterJurusan
-
+        btn_refresh_trend.setOnClickListener {
+            btn_refresh_trend.visibility = View.GONE
+            TrendPresenter.showPopulerJurusan(this)
+            spinner_kelompok_jurusan.setOnItemSelectedListener(this)
+        }
     }
 
     override fun showLoading() {
-        swiperefresh_trend.isRefreshing = true
+        pb_trend.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        swiperefresh_trend.isRefreshing = false
+        pb_trend.visibility = View.GONE
     }
 
     override fun showPopulerJurusan(data: List<Jurusan>) {
+        swiperefresh_trend.isRefreshing = false
         if (!data.isNullOrEmpty()) {
             jurusanPopulerList.clear()
             jurusanPopulerList.addAll(data)
@@ -94,6 +100,8 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
 
     override fun showError(data: String) {
         Log.d("TAGERROR", data)
+        swiperefresh_trend.isRefreshing = false
+        btn_refresh_trend.visibility = View.VISIBLE
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

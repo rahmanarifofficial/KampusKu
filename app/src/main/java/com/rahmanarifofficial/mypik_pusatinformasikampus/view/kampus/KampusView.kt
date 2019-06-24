@@ -6,5 +6,5 @@ interface KampusView {
     fun showLoading()
     fun hideLoading()
     fun showPtnList(data: List<PTN>)
-    fun showError(error: String)
+    fun showError()
 }

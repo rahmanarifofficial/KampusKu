@@ -7,6 +7,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_profil.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class DetailProfilActivity : AppCompatActivity() {
@@ -38,7 +39,7 @@ class DetailProfilActivity : AppCompatActivity() {
                 .into(iv_foto_profil_akun)
         }
         btn_edit_profile.setOnClickListener {
-            toast("edit")
+            startActivity<EditProfileActivity>()
         }
     }
 

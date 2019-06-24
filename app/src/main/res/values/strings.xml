@@ -122,8 +122,10 @@
   <string name="tentang_developer_text">Tentang Developer</string>
   <string name="content_developer_about">Developer merupakan seorang Mahasiswa di Universitas Brawijaya\nUntuk
     lebih lengkapnya bisa berkunjung melalui instagram ataupun facebook rahmanarifofficial\nUntuk
-    keperluan bisnis lainnya dapat menghubungi email rahmanarifofficial@gmail.com</string>
+    keperluan bisnis lainnya dapat menghubungi email rahmanarifofficial@gmail.com
+  </string>
   <string name="hubungi_developer">Hubungi Developer</string>
   <string name="text_tanya">Tuliskan pertanyaan Anda Disini</string>
   <string name="kirim">kirim</string>
+  <string name="refresh">Klik untuk Refresh</string>
 </resources>

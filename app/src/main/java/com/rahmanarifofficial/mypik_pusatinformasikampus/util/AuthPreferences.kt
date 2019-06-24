@@ -31,4 +31,18 @@ class AuthPreferences(val context: Context) {
         val key = context.getResources().getString(R.string.daya_tampung_text)
         return prefs.getString(key, null)
     }
+
+    fun setIdPengguna(input: String) {
+        val editor: SharedPreferences.Editor = prefs.edit()
+        val key = context.getResources().getString(R.string.tentang_text)
+        editor.putString(key, input)
+        editor.commit()
+    }
+
+    fun getIdPengguna(): String {
+        val key = context.getResources().getString(R.string.tentang_text)
+        return prefs.getString(key, null)
+    }
+
+
 }

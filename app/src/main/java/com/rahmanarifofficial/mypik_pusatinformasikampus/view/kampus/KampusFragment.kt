@@ -14,7 +14,10 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.PTN
+import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
+import kotlinx.android.synthetic.main.fragment_kampus.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
@@ -50,6 +53,10 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         swiperefresh_ptn.onRefresh {
             KampusPresenter.getListPTN(this)
         }
+        btn_refresh_kampus.setOnClickListener {
+            btn_refresh_kampus.visibility = View.GONE
+            KampusPresenter.getListPTN(this)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -76,8 +83,10 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         adapter.notifyDataSetChanged()
     }
 
-    override fun showError(error: String) {
-        Log.d("TAGERROR", error)
+    override fun showError() {
+        Log.d("TAGERROR", "ERROR")
+        swiperefresh_ptn.isRefreshing = false
+        btn_refresh_kampus.visibility = View.VISIBLE
     }
 
     override fun onQueryTextSubmit(p0: String?): Boolean {

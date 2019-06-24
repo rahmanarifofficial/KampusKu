@@ -3,7 +3,6 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.proyeksi
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AuthentikasiFragment
 import kotlinx.android.synthetic.main.fragment_sbmptn.*
+import org.jetbrains.anko.support.v4.startActivity
 
 class SbmptnFragment : Fragment() {
 
@@ -31,18 +31,26 @@ class SbmptnFragment : Fragment() {
 
         btnInputUTBK.setOnClickListener {
             if (prefs.getWasLogin()) {
-                updateUI(InputUTBKFragment())
+                updateUI(1)
             } else {
                 updateUI(AuthentikasiFragment())
             }
         }
 
+        btnLihatProyeksi.visibility = View.GONE
         btnLihatProyeksi.setOnClickListener {
             if (prefs.getWasLogin()) {
-                updateUI(HasilProyeksiFragment())
+                updateUI(2)
             } else {
                 updateUI(AuthentikasiFragment())
             }
+        }
+    }
+
+    private fun updateUI(kode: Int) {
+        when (kode) {
+            1 -> startActivity<InputUTBKActivity>()
+            2 -> startActivity<HasilProyeksiActivity>()
         }
     }
 

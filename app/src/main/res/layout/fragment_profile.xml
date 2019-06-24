@@ -10,6 +10,18 @@
       android:layout_height="wrap_content"
       android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btn_refresh_profile"
+        android:layout_gravity="center"
+        android:background="@drawable/background_button"
+        android:text="@string/refresh"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/info_profile"
         android:padding="16dp"
@@ -55,6 +67,7 @@
 
     <LinearLayout
         android:id="@+id/help_profile"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -82,6 +95,7 @@
         android:background="@color/dividerColor"/>
     <LinearLayout
         android:id="@+id/about_profile"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -111,6 +125,7 @@
 
     <LinearLayout
         android:id="@+id/logout_profile"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="logout"

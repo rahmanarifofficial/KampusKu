@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swiperefresh_utbk"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+  <ScrollView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/scrollView2">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/ic_undraw_analyze_17kw"
+        android:padding="16dp"
+        tools:context=".view.proyeksi.InputUTBKActivity"
+        android:orientation="vertical">
+
+      <include
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          layout="@layout/dialog_input_nilai_tps"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+          android:id="@+id/layout_nilai_tps"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"/>
+
+      <Spinner
+          android:id="@+id/spinner_pilihan"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+          android:layout_marginBottom="8dp"/>
+
+      <include
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          layout="@layout/dialog_input_nilai_saintek"
+          android:id="@+id/layout_nilai_saintek"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+
+      <include
+          android:id="@+id/layout_nilai_soshum"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          layout="@layout/dialog_input_nilai_soshum"
+          android:layout_marginTop="8dp"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+
+      <include
+          android:id="@+id/layout_pilih_kampus"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          layout="@layout/dialog_pilih_kampus"
+          android:layout_marginTop="8dp"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+
+      <Button
+          android:id="@+id/btnSubmitNilai"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="8dp"
+          android:text="@string/submit_nilai_text"
+          android:background="@color/colorPrimary"
+          android:textColor="@android:color/white"/>
+    </LinearLayout>
+  </ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

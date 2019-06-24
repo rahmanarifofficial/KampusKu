@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swiperefresh_beasiswa"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context=".view.trend.TrendFragment">
+    tools:context=".view.beasiswa.BeasiswaFragment">
 
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -23,6 +23,25 @@
           android:scrollbars="horizontal"
           android:layout_marginBottom="10dp"/>
 
-    </LinearLayout>
+      <Button
+          android:id="@+id/btn_refresh_beasiswa"
+          android:layout_gravity="center"
+          android:background="@drawable/background_button"
+          android:text="@string/refresh"
+          android:padding="10dp"
+          android:layout_margin="10dp"
+          android:visibility="gone"
+          android:textColor="@android:color/white"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"/>
+
+      <ProgressBar
+          android:id="@+id/pb_beasiswa"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
   </ScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>

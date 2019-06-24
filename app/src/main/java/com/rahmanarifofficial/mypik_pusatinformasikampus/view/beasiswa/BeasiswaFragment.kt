@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
+import android.view.View.GONE
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.BeasiswaListAdapter
@@ -39,6 +40,11 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
         swiperefresh_beasiswa.onRefresh {
             BeasiswaPresenter.showBeasiswa(this)
         }
+        btn_refresh_beasiswa.visibility = GONE
+        btn_refresh_beasiswa.setOnClickListener {
+            btn_refresh_beasiswa.visibility = View.GONE
+            BeasiswaPresenter.showBeasiswa(this)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -52,11 +58,11 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
 
 
     override fun showLoading() {
-        swiperefresh_beasiswa.isRefreshing = true
+        pb_beasiswa.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        swiperefresh_beasiswa.isRefreshing = false
+        pb_beasiswa.visibility = View.GONE
     }
 
     override fun showBeasiswa(data: List<Beasiswa>) {
@@ -68,6 +74,8 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
 
     override fun showError(data: String) {
         Log.d("TAGERROR", data)
+        swiperefresh_beasiswa.isRefreshing = false
+        btn_refresh_beasiswa.visibility = View.VISIBLE
     }
 
     override fun onQueryTextSubmit(p0: String?): Boolean {

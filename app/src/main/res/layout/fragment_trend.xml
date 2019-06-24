@@ -16,6 +16,13 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+      <ProgressBar
+          android:id="@+id/pb_trend"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+      android:visibility="gone"/>
+
       <TextView
           android:layout_width="match_parent" android:layout_height="wrap_content"
           android:text="@string/text_jurusan_populer"
@@ -47,6 +54,19 @@
           android:id="@+id/rv_list_jurusan"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
+
+      <Button
+          android:id="@+id/btn_refresh_trend"
+          android:layout_gravity="center"
+          android:background="@drawable/background_button"
+          android:text="@string/refresh"
+          android:padding="10dp"
+          android:layout_margin="10dp"
+          android:textColor="@android:color/white"
+          android:visibility="gone"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
     </LinearLayout>
   </ScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -5,7 +5,6 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="3dp"
-    android:padding="16dp"
     card_view:cardUseCompatPadding="true">
 
   <LinearLayout
@@ -13,6 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
+      android:padding="16dp"
       android:background="@android:color/white">
 
     <LinearLayout

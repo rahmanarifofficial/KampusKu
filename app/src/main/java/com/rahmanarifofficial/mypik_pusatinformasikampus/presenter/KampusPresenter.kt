@@ -19,7 +19,7 @@ class KampusPresenter() {
             val call = apiService?.getListPTN()
             call?.enqueue(object : Callback<List<PTN>> {
                 override fun onFailure(call: Call<List<PTN>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError()
                     view.hideLoading()
                 }
 
@@ -36,7 +36,7 @@ class KampusPresenter() {
             val call = apiService?.getSearchPTN(nama)
             call?.enqueue(object : Callback<List<PTN>> {
                 override fun onFailure(call: Call<List<PTN>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError()
                     view.hideLoading()
                 }
 

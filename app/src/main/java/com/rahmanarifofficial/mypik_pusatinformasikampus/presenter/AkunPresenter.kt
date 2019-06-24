@@ -55,7 +55,7 @@ class AkunPresenter {
         ) {
             view.showProgress()
             val storageRef = FirebaseStorage.getInstance()
-                .getReference("pengguna/" + email + DateTimeNow.DATENOW() + DateTimeNow.TIMENOW());
+                .getReference("pengguna/" + email + DateTimeNow.DATENOW() + DateTimeNow.TIMENOW())
             storageRef.putFile(foto)
                 .addOnSuccessListener {
                     storageRef.downloadUrl.addOnSuccessListener {
@@ -118,7 +118,7 @@ class AkunPresenter {
                 }
 
                 override fun onResponse(call: Call<List<Pengguna>>, response: Response<List<Pengguna>>) {
-                    if (!response.body()!!.isEmpty()) {
+                    if (!response.body()!!.isNullOrEmpty()) {
                         view.showProfil(response.body()!!)
                     } else {
                         view.updateUI()

@@ -11,9 +11,11 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
+import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.BeasiswaPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_beasiswa.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -22,6 +24,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var loginPrefs: LoginPreferences
+    private lateinit var prefs: AuthPreferences
     private lateinit var nama: String
     private lateinit var email: String
     private lateinit var alamat: String
@@ -39,7 +42,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val prefs = AuthPreferences(activity!!)
+        prefs = AuthPreferences(activity!!)
         loginPrefs = LoginPreferences(activity!!)
         val email = prefs.getEmail()
         val password = prefs.getPassword()
@@ -51,29 +54,46 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
         about_profile.setOnClickListener(this)
         help_profile.setOnClickListener(this)
         logout_profile.setOnClickListener(this)
+
+        btn_refresh_profile.setOnClickListener {
+            btn_refresh_profile.visibility = View.GONE
+            AkunPresenter.getPengguna(this, email, password)
+        }
+
     }
 
     override fun showProfil(data: List<Pengguna>) {
-        nama = data[0].namaPengguna!!
-        email = data[0].emailPengguna!!
-        alamat = data[0].alamatPengguna!!
-        asalSekolah = data[0].asal_sekolah!!
-        facebook = data[0].facebook!!
-        instagram = data[0].instagram!!
-        noTelp = data[0].no_telp!!
-        foto = data[0].linkFoto!!
+        if (!data.isNullOrEmpty()) {
+            info_profile.visibility = View.VISIBLE
+            about_profile.visibility = View.VISIBLE
+            help_profile.visibility = View.VISIBLE
+            logout_profile.visibility = View.VISIBLE
+            prefs.setIdPengguna(data[0].idPengguna!!)
+            nama = data[0].namaPengguna!!
+            email = data[0].emailPengguna!!
+            alamat = data[0].alamatPengguna!!
+            asalSekolah = data[0].asal_sekolah!!
+            facebook = data[0].facebook!!
+            instagram = data[0].instagram!!
+            noTelp = data[0].no_telp!!
+            if (!data[0].linkFoto.isNullOrEmpty()) {
+                foto = data[0].linkFoto!!
+            } else
+                foto = ""
 
-        tv_info_nama_akun.text = nama
-        tv_info_email_akun.text = email
-        if (!data[0].linkFoto.isNullOrEmpty()) {
-            Picasso.get().load(foto).placeholder(R.drawable.ic_user_avatar).centerCrop().fit()
-                .into(iv_info_foto_profil_akun)
+            tv_info_nama_akun.text = nama
+            tv_info_email_akun.text = email
+            if (!data[0].linkFoto.isNullOrEmpty()) {
+                Picasso.get().load(foto).placeholder(R.drawable.ic_user_avatar).centerCrop().fit()
+                    .into(iv_info_foto_profil_akun)
+            }
         }
     }
 
 
     override fun showToast(data: String) {
         Log.d("TAGERROR", data)
+        btn_refresh_profile.visibility = View.VISIBLE
     }
 
     override fun updateUI() {
