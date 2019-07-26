@@ -128,4 +128,5 @@
   <string name="text_tanya">Tuliskan pertanyaan Anda Disini</string>
   <string name="kirim">kirim</string>
   <string name="refresh">Klik untuk Refresh</string>
+  <string name="favorites">Favorites Item</string>
 </resources>

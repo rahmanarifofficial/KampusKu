@@ -32,8 +32,8 @@ class DetailKampusActivity : AppCompatActivity(),
         kode = intent.getStringExtra("kode")
         KampusPresenter.getPTN(this, kode)
 
-        setupViewPager(view_pager_prodi)
-        tab_prodi.setupWithViewPager(view_pager_prodi)
+//        setupViewPager(view_pager_prodi)
+//        tab_prodi.setupWithViewPager(view_pager_prodi)
         swiperefresh_detail_ptn.onRefresh {
             KampusPresenter.getPTN(this, kode)
         }

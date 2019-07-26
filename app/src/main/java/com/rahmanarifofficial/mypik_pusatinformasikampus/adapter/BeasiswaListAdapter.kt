@@ -7,15 +7,21 @@ import android.view.ViewGroup
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Beasiswa
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_beasiswa.view.*
+import kotlinx.android.synthetic.main.item_beasiswa_active.view.*
 
 class BeasiswaListAdapter(private var beasiswa: List<Beasiswa>, private val listener: (Beasiswa) -> Unit) :
     RecyclerView.Adapter<BeasiswaListAdapter.BeasiswaViewHolder>() {
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): BeasiswaViewHolder {
+
+    companion object {
+        val BEASISWA_ACTIVE_CODE = 1
+        val BEASISWA_INACTIVE_CODE = 2
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeasiswaViewHolder {
         return BeasiswaListAdapter.BeasiswaViewHolder(
-            LayoutInflater.from(p0.context).inflate(
-                R.layout.item_beasiswa,
-                p0,
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_beasiswa_active,
+                parent,
                 false
             )
         )
@@ -23,6 +29,10 @@ class BeasiswaListAdapter(private var beasiswa: List<Beasiswa>, private val list
 
     override fun getItemCount(): Int {
         return beasiswa.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
     }
 
     override fun onBindViewHolder(p0: BeasiswaViewHolder, p1: Int) {

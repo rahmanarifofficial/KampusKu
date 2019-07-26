@@ -1,72 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swiperefresh_trend"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".view.trend.TrendFragment">
 
-  <ScrollView
+  <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/text_jurusan_populer"
+            android:textSize="16sp"
+            android:fontFamily="@font/neosansblack"
+            android:layout_marginBottom="20dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list_jurusan_populer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/text_eksplorasi_jurusan"
+            android:textSize="16sp"
+            android:fontFamily="@font/neosansblack"
+            android:layout_marginBottom="20dp"/>
+
+        <Spinner
+            android:id="@+id/spinner_kelompok_jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list_jurusan"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+      </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+    <Button
+        android:id="@+id/btn_refresh_trend"
+        android:layout_gravity="center"
+        android:background="@drawable/background_button"
+        android:text="@string/refresh"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-      <ProgressBar
-          android:id="@+id/pb_trend"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-      android:visibility="gone"/>
-
-      <TextView
-          android:layout_width="match_parent" android:layout_height="wrap_content"
-          android:text="@string/text_jurusan_populer"
-          android:textSize="16sp"
-          android:fontFamily="@font/neosansblack"
-          android:layout_marginBottom="20dp"/>
-
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rv_list_jurusan_populer"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:scrollbars="horizontal"
-          android:layout_marginBottom="10dp"/>
-
-      <TextView
-          android:layout_width="match_parent" android:layout_height="wrap_content"
-          android:text="@string/text_eksplorasi_jurusan"
-          android:textSize="16sp"
-          android:fontFamily="@font/neosansblack"
-          android:layout_marginBottom="20dp"/>
-
-      <Spinner
-          android:id="@+id/spinner_kelompok_jurusan"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="10dp"/>
-
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rv_list_jurusan"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-
-      <Button
-          android:id="@+id/btn_refresh_trend"
-          android:layout_gravity="center"
-          android:background="@drawable/background_button"
-          android:text="@string/refresh"
-          android:padding="10dp"
-          android:layout_margin="10dp"
-          android:textColor="@android:color/white"
-          android:visibility="gone"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-  </ScrollView>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+  </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="3dp"
+    card_view:cardUseCompatPadding="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="8dp"
+      android:layout_margin="8dp"
+      android:weightSum="10">
+
+    <ImageView
+        android:id="@+id/iv_foto_banner_beasiswa"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_nama_beasiswa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/neosansblack"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_nama_penyelenggara_beasiswa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6">
+      <LinearLayout
+          android:layout_weight="2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:weightSum="2">
+        <TextView
+            android:text="@string/text_deadline"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/tv_deadline_beasiswa"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+      </LinearLayout>
+      <View
+          android:background="@color/dividerColor"
+          android:layout_width="1dp"
+          android:layout_height="match_parent"/>
+      <LinearLayout
+          android:layout_weight="2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:weightSum="2">
+        <TextView
+            android:text="@string/text_kategori"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/tv_kategori_beasiswa"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+      </LinearLayout>
+      <View
+          android:background="@color/dividerColor"
+          android:layout_width="1dp"
+          android:layout_height="match_parent"/>
+      <LinearLayout
+          android:layout_weight="2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:weightSum="2">
+        <TextView
+            android:text="@string/text_pembiayaan"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="0dp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/tv_jenis_beasiswa"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</android.support.v7.widget.CardView>

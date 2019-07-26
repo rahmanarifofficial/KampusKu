@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swiperefresh_ptn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +14,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list_ptn"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -24,15 +26,11 @@
         android:padding="10dp"
         android:textColor="@android:color/white"
         android:layout_margin="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
-    <ProgressBar
-        android:id="@+id/pb_ptn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
   </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

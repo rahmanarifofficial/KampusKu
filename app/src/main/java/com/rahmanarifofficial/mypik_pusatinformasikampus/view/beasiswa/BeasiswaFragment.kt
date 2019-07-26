@@ -2,11 +2,14 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
 import android.view.View.GONE
+import android.widget.Button
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.BeasiswaListAdapter
@@ -18,6 +21,9 @@ import org.jetbrains.anko.support.v4.onRefresh
 
 class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
 
+    private lateinit var swiperefresh_beasiswa: SwipeRefreshLayout
+    private lateinit var btn_refresh_beasiswa: Button
+    private lateinit var rv_list_beasiswa: RecyclerView
     private lateinit var adapter: BeasiswaListAdapter
 
     private var beasiswaList: MutableList<Beasiswa> = mutableListOf()
@@ -25,7 +31,11 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_beasiswa))
-        return inflater.inflate(R.layout.fragment_beasiswa, container, false)
+        val v = inflater.inflate(R.layout.fragment_beasiswa, container, false)
+        swiperefresh_beasiswa = v.findViewById(R.id.swiperefresh_beasiswa)
+        btn_refresh_beasiswa = v.findViewById(R.id.btn_refresh_beasiswa)
+        rv_list_beasiswa = v.findViewById(R.id.rv_list_beasiswa)
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -58,11 +68,11 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
 
 
     override fun showLoading() {
-        pb_beasiswa.visibility = View.VISIBLE
+        swiperefresh_beasiswa.isRefreshing = true
     }
 
     override fun hideLoading() {
-        pb_beasiswa.visibility = View.GONE
+        swiperefresh_beasiswa.isRefreshing = false
     }
 
     override fun showBeasiswa(data: List<Beasiswa>) {

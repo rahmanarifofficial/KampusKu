@@ -1,8 +1,10 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.presenter
 
+import android.util.Log
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Beasiswa
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiBuilder
 import com.rahmanarifofficial.mypik_pusatinformasikampus.network.ApiService
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.DateTime
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa.BeasiswaView
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +23,16 @@ class BeasiswaPresenter {
                 }
 
                 override fun onResponse(call: Call<List<Beasiswa>>, response: Response<List<Beasiswa>>) {
-                    view.showBeasiswa(response.body()!!)
+                    var listBeasiswa = mutableListOf<Beasiswa>()
+                    for (item in response.body()!!) {
+                        val dateDeadlineBeasiswa = DateTime.toDate(item.deadline)
+                        val dateNow = DateTime.toDate(DateTime.DATENOW())
+                        Log.d("TAGTGL", DateTime.DATENOW())
+                        if (dateDeadlineBeasiswa.after(dateNow)) {
+                            listBeasiswa.add(item)
+                        }
+                    }
+                    view.showBeasiswa(listBeasiswa)
                     view.hideLoading()
                 }
             })

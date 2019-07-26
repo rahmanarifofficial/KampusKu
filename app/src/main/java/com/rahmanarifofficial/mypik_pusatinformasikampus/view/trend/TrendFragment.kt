@@ -2,21 +2,19 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.*
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.JurusanPopulerListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Jurusan
-import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.TrendPresenter
-import kotlinx.android.synthetic.main.fragment_kampus.*
-import kotlinx.android.synthetic.main.fragment_trend.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
@@ -25,6 +23,11 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
 
     private lateinit var adapter: JurusanPopulerListAdapter
     private lateinit var adapterJurusan: JurusanListAdapter
+    private lateinit var swiperefresh_trend: SwipeRefreshLayout
+    private lateinit var btn_refresh_trend: Button
+    private lateinit var rv_list_jurusan: RecyclerView
+    private lateinit var rv_list_jurusan_populer: RecyclerView
+    private lateinit var spinner_kelompok_jurusan: Spinner
 
     private var jurusanPopulerList: MutableList<Jurusan> = mutableListOf()
     private var jurusanList: MutableList<Jurusan> = mutableListOf()
@@ -43,9 +46,15 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_trend))
-        return inflater.inflate(R.layout.fragment_trend, container, false)
+        val v = inflater.inflate(R.layout.fragment_trend, container, false)
+        swiperefresh_trend = v.findViewById(R.id.swiperefresh_trend)
+        btn_refresh_trend = v.findViewById(R.id.btn_refresh_trend)
+        rv_list_jurusan = v.findViewById(R.id.rv_list_jurusan)
+        rv_list_jurusan_populer = v.findViewById(R.id.rv_list_jurusan_populer)
+        spinner_kelompok_jurusan = v.findViewById(R.id.spinner_kelompok_jurusan)
+
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -76,11 +85,11 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
     }
 
     override fun showLoading() {
-        pb_trend.visibility = View.VISIBLE
+        swiperefresh_trend.isRefreshing = true
     }
 
     override fun hideLoading() {
-        pb_trend.visibility = View.GONE
+        swiperefresh_trend.isRefreshing = false
     }
 
     override fun showPopulerJurusan(data: List<Jurusan>) {

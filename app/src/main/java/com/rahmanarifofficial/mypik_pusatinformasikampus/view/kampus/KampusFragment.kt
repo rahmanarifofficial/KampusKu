@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.ProgressBar
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
@@ -23,20 +24,19 @@ import org.jetbrains.anko.support.v4.onRefresh
 
 class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
 
-    private lateinit var pb_ptn: ProgressBar
     private lateinit var swiperefresh_ptn: SwipeRefreshLayout
+    private lateinit var btn_refresh_kampus: Button
     private lateinit var list_ptn: RecyclerView
     private lateinit var adapter: KampusListAdapter
 
     private var ptnList: MutableList<PTN> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_kampus))
         val v = inflater.inflate(R.layout.fragment_kampus, container, false)
-        pb_ptn = v.findViewById(R.id.pb_ptn)
         swiperefresh_ptn = v.findViewById(R.id.swiperefresh_ptn)
         list_ptn = v.findViewById(R.id.rv_list_ptn)
+        btn_refresh_kampus = v.findViewById(R.id.btn_refresh_kampus)
 
         return v;
     }
@@ -69,11 +69,11 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
     }
 
     override fun showLoading() {
-        pb_ptn.visibility = View.VISIBLE
+        swiperefresh_ptn.isRefreshing = true
     }
 
     override fun hideLoading() {
-        pb_ptn.visibility = View.INVISIBLE
+        swiperefresh_ptn.isRefreshing = false
     }
 
     override fun showPtnList(data: List<PTN>) {
