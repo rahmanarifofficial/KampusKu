@@ -32,75 +32,62 @@ class PTN {
     @Expose
     private var link_drop: String? = null
 
-    fun getKODE(): String? {
-        return kode
+    constructor(
+        kode: String?,
+        nama: String?,
+        link_pmb: String?,
+        link_logo: String?,
+        akreditasi: String?,
+        provinsi: String?,
+        worldrank: String?,
+        jumlah_prodi: String?,
+        link_drop: String?
+    ) {
+        this.kode = kode
+        this.nama = nama
+        this.link_pmb = link_pmb
+        this.link_logo = link_logo
+        this.akreditasi = akreditasi
+        this.provinsi = provinsi
+        this.worldrank = worldrank
+        this.jumlah_prodi = jumlah_prodi
+        this.link_drop = link_drop
     }
 
-    fun setKODE(kODE: String) {
-        this.kode = kODE
+
+    fun getKODE(): String? {
+        return kode
     }
 
     fun getNAMA(): String? {
         return nama
     }
 
-    fun setNAMA(nAMA: String) {
-        this.nama = nAMA
-    }
-
     fun getLINKPMB(): String? {
         return link_pmb
-    }
-
-    fun setLINKPMB(lINKPMB: String) {
-        this.link_pmb = lINKPMB
     }
 
     fun getLINKLOGO(): String? {
         return link_logo
     }
 
-    fun setLINKLOGO(lINKLOGO: String) {
-        this.link_logo = lINKLOGO
-    }
-
     fun getAKREDITASI(): String? {
         return akreditasi
-    }
-
-    fun setAKREDITASI(aKREDITASI: String) {
-        this.akreditasi = aKREDITASI
     }
 
     fun getPROVINSI(): String? {
         return provinsi
     }
 
-    fun setPROVINSI(pROVINSI: String) {
-        this.provinsi = pROVINSI
-    }
-
     fun getWORLDRANK(): String? {
         return worldrank
-    }
-
-    fun setWORLDRANK(wORLDRANK: String) {
-        this.worldrank = wORLDRANK
     }
 
     fun getJUMLAHPRODI(): String? {
         return jumlah_prodi
     }
 
-    fun setJUMLAHPRODI(kuota: String) {
-        this.jumlah_prodi = kuota
-    }
-
     fun getLINKDROP(): String? {
         return link_drop
-    }
-
-    fun setLINKDROP(link_drop: String?) {
-        this.link_drop = link_drop
     }
 }

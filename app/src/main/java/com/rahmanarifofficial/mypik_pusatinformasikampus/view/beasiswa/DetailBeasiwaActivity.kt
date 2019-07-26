@@ -40,6 +40,14 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail, menu)
+        menuItem = menu
+        favoriteState()
+        setFavorite()
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
@@ -98,15 +106,7 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
     }
 
     override fun showError(data: String) {
-        Log.d("TAGERROR", data)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_detail, menu)
-        menuItem = menu
-        favoriteState()
-        setFavorite()
-        return true
+        Log.d(TAG, data)
     }
 
     private fun setFavorite() {
@@ -134,7 +134,7 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
             database.use {
                 delete(BeasiswaDB.TABLE_BEASISWA, "(ID_BEASISWA = {idBeasiswa})", "idBeasiswa" to idBeasiswa)
             }
-            toast("Dihapus dari Favorite")
+            toast(getString(R.string.hapus_favorite))
         } catch (e: SQLiteException) {
             Log.d(TAG, e.message)
         }
@@ -154,7 +154,7 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
                     BeasiswaDB.LINK_BANNER to beasiswa.linkBanner
                 )
             }
-            toast("Disimpan Ke Favorite")
+            toast(getString(R.string.tambah_favorite))
         } catch (e: SQLiteException) {
             Log.d(TAG, e.message)
         }
