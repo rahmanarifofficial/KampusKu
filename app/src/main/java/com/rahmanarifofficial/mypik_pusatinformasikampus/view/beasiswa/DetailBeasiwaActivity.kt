@@ -77,21 +77,15 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
 
     override fun showBeasiswa(data: List<Beasiswa>) {
         if (!data.isNullOrEmpty()) {
-            beasiswa =
-                Beasiswa(
-                    data[0].id,
-                    data[0].beasiswa,
-                    data[0].jenisPembiayaan,
-                    data[0].deadline,
-                    data[0].kategori,
-                    data[0].deskripsi,
-                    data[0].komponenBeasiswa,
-                    data[0].persyaratanPendaftar,
-                    data[0].berkasPendaftaran,
-                    data[0].linkBanner,
-                    data[0].penyelenggara,
-                    data[0].prosesPendaftaran
-                )
+            beasiswa = Beasiswa(
+                data[0].id,
+                data[0].beasiswa,
+                data[0].deadline,
+                data[0].kategori,
+                data[0].jenisPembiayaan,
+                data[0].penyelenggara,
+                data[0].linkBanner
+            )
             supportActionBar?.title = data[0].beasiswa
             tv_deadline_detail_beasiswa.text = data[0].deadline
             tv_jenis_detail_beasiswa.text = data[0].jenisPembiayaan
@@ -159,5 +153,4 @@ class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
             Log.d(TAG, e.message)
         }
     }
-
 }

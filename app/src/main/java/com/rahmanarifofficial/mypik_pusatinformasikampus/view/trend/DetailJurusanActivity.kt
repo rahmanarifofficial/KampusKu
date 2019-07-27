@@ -91,11 +91,7 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
 
     override fun showJurusan(data: List<Jurusan>) {
         if (!data.isNullOrEmpty()) {
-            jurusan = Jurusan(
-                data[0].id, data[0].jurusan, data[0].tipe, data[0].mapel, data[0].deskripsi,
-                data[0].alasanPilih, data[0].karakterSiswa, data[0].prospekKerja, data[0].namaKelompok,
-                data[0].profesiKerja, data[0].fotoBanner
-            )
+            jurusan = Jurusan(data[0].id, data[0].jurusan, data[0].namaKelompok, data[0].mapel, data[0].tipe)
             swiperefresh_detail_jurusan.isRefreshing = false
             TrendPresenter.showJurusanPTN(data[0].jurusan!!, this)
             supportActionBar?.title = data[0].jurusan
@@ -164,11 +160,12 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
                     JurusanDB.TABLE_JURUSAN,
                     JurusanDB.ID_JURUSAN to jurusan.id,
                     JurusanDB.JURUSAN to jurusan.jurusan,
-                    JurusanDB.KELOMPOK to jurusan.namaKelompok,
+                    JurusanDB.NAMA_KELOMPOK to jurusan.namaKelompok,
                     JurusanDB.MAPEL to jurusan.mapel,
                     JurusanDB.TIPE to jurusan.tipe
                 )
             }
+            Log.d(TAG, jurusan.namaKelompok)
             toast(getString(R.string.tambah_favorite))
         } catch (e: SQLiteException) {
             Log.d(TAG, e.message)

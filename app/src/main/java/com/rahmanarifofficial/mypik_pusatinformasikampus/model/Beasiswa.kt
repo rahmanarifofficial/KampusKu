@@ -10,15 +10,21 @@ data class Beasiswa(
     @SerializedName("beasiswa")
     @Expose
     var beasiswa: String? = null,
-    @SerializedName("jenis_pembiayaan")
-    @Expose
-    var jenisPembiayaan: String? = null,
     @SerializedName("deadline")
     @Expose
     var deadline: String? = null,
     @SerializedName("kategori")
     @Expose
     var kategori: String? = null,
+    @SerializedName("jenis_pembiayaan")
+    @Expose
+    var jenisPembiayaan: String? = null,
+    @SerializedName("penyelenggara")
+    @Expose
+    var penyelenggara: String? = null,
+    @SerializedName("link_banner")
+    @Expose
+    var linkBanner: String? = null,
     @SerializedName("deskripsi")
     @Expose
     var deskripsi: String? = null,
@@ -31,12 +37,6 @@ data class Beasiswa(
     @SerializedName("berkas_pendaftaran")
     @Expose
     var berkasPendaftaran: String? = null,
-    @SerializedName("link_banner")
-    @Expose
-    var linkBanner: String? = null,
-    @SerializedName("penyelenggara")
-    @Expose
-    var penyelenggara: String? = null,
     @SerializedName("proses_pendaftaran")
     @Expose
     var prosesPendaftaran: String? = null

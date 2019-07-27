@@ -128,7 +128,7 @@
   <string name="text_tanya">Tuliskan pertanyaan Anda Disini</string>
   <string name="kirim">kirim</string>
   <string name="refresh">Klik untuk Refresh</string>
-  <string name="favorites">Favorites Item</string>
+  <string name="favorites">Item Favorites</string>
   <string name="tambah_favorite">Disimpan Ke Favorite</string>
   <string name="hapus_favorite">Dihapus dari Favorite</string>
 </resources>

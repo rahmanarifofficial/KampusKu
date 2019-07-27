@@ -13,6 +13,8 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <activity android:name=".view.favorites.FavoritesActivity">
+    </activity>
     <activity android:name=".view.proyeksi.HasilProyeksiActivity">
     </activity>
     <activity android:name=".view.proyeksi.InputUTBKActivity">

@@ -10,15 +10,15 @@ data class Jurusan(
     @SerializedName("jurusan")
     @Expose
     var jurusan: String? = null,
-    @SerializedName("id_kelompok")
+    @SerializedName("nama_kelompok")
     @Expose
-    var idKelompok: String? = null,
-    @SerializedName("tipe")
-    @Expose
-    var tipe: String? = null,
+    var namaKelompok: String? = null,
     @SerializedName("mapel")
     @Expose
     var mapel: String? = null,
+    @SerializedName("tipe")
+    @Expose
+    var tipe: String? = null,
     @SerializedName("deskripsi")
     @Expose
     var deskripsi: String? = null,
@@ -37,9 +37,9 @@ data class Jurusan(
     @SerializedName("profesi_kerja")
     @Expose
     var profesiKerja: String? = null,
-    @SerializedName("nama_kelompok")
+    @SerializedName("id_kelompok")
     @Expose
-    var namaKelompok: String? = null,
+    var idKelompok: String? = null,
     @SerializedName("link_banner")
     @Expose
     var fotoBanner: String? = null

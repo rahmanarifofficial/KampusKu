@@ -33,7 +33,7 @@ class FavoriteDbHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorite.db
             JurusanDB.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
             JurusanDB.ID_JURUSAN to TEXT + UNIQUE,
             JurusanDB.JURUSAN to TEXT,
-            JurusanDB.KELOMPOK to TEXT,
+            JurusanDB.NAMA_KELOMPOK to TEXT,
             JurusanDB.MAPEL to TEXT,
             JurusanDB.TIPE to TEXT
         )
@@ -43,10 +43,10 @@ class FavoriteDbHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorite.db
             BeasiswaDB.ID_BEASISWA to TEXT + UNIQUE,
             BeasiswaDB.BEASISWA to TEXT,
             BeasiswaDB.DEADLINE to TEXT,
-            BeasiswaDB.JENIS_PEMBIAYAAN to TEXT,
             BeasiswaDB.KATEGORI to TEXT,
-            BeasiswaDB.LINK_BANNER to TEXT,
-            BeasiswaDB.PENYELENGGARA to TEXT
+            BeasiswaDB.JENIS_PEMBIAYAAN to TEXT,
+            BeasiswaDB.PENYELENGGARA to TEXT,
+            BeasiswaDB.LINK_BANNER to TEXT
         )
     }
 

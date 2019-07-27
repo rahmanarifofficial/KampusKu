@@ -1,24 +1,27 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Pengguna
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
-import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.BeasiswaPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.LoginPreferences
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.TAG.TAG
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.favorites.FavoritesActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_beasiswa.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.support.v4.startActivity
-
 
 class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
@@ -34,9 +37,29 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
     private lateinit var noTelp: String
     private lateinit var foto: String
 
+    private lateinit var iv_info_foto_profil_akun: ImageView
+    private lateinit var tv_info_nama_akun: TextView
+    private lateinit var tv_info_email_akun: TextView
+    private lateinit var info_profile: ConstraintLayout
+    private lateinit var favorite_profile: LinearLayout
+    private lateinit var about_profile: LinearLayout
+    private lateinit var help_profile: LinearLayout
+    private lateinit var logout_profile: LinearLayout
+    private lateinit var btn_refresh_profile: Button
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_profil))
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val v = inflater.inflate(R.layout.fragment_profile, container, false)
+        iv_info_foto_profil_akun = v.findViewById(R.id.iv_info_foto_profil_akun)
+        tv_info_nama_akun = v.findViewById(R.id.tv_info_nama_akun)
+        tv_info_email_akun = v.findViewById(R.id.tv_info_email_akun)
+        info_profile = v.findViewById(R.id.info_profile)
+        favorite_profile = v.findViewById(R.id.favorite_profile)
+        about_profile = v.findViewById(R.id.about_profile)
+        help_profile = v.findViewById(R.id.help_profile)
+        logout_profile = v.findViewById(R.id.logout_profile)
+        btn_refresh_profile = v.findViewById(R.id.btn_refresh_profile)
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -51,6 +74,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
         AkunPresenter.getPengguna(this, email, password)
         info_profile.setOnClickListener(this)
+        favorite_profile.setOnClickListener(this)
         about_profile.setOnClickListener(this)
         help_profile.setOnClickListener(this)
         logout_profile.setOnClickListener(this)
@@ -64,10 +88,6 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
     override fun showProfil(data: List<Pengguna>) {
         if (!data.isNullOrEmpty()) {
-            info_profile.visibility = View.VISIBLE
-            about_profile.visibility = View.VISIBLE
-            help_profile.visibility = View.VISIBLE
-            logout_profile.visibility = View.VISIBLE
             prefs.setIdPengguna(data[0].idPengguna!!)
             nama = data[0].namaPengguna!!
             email = data[0].emailPengguna!!
@@ -92,7 +112,7 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
 
 
     override fun showToast(data: String) {
-        Log.d("TAGERROR", data)
+        Log.d(TAG, data)
         btn_refresh_profile.visibility = View.VISIBLE
     }
 
@@ -116,6 +136,9 @@ class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
                     "noTelp" to noTelp,
                     "foto" to foto
                 )
+            }
+            R.id.favorite_profile -> {
+                startActivity<FavoritesActivity>()
             }
             R.id.help_profile -> {
                 startActivity<BantuanActivity>()

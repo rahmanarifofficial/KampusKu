@@ -153,6 +153,7 @@ class DetailKampusActivity : AppCompatActivity(),
                     KampusDB.AKREDITASI to ptn.getAKREDITASI()
                 )
             }
+            Log.d(TAG, ptn.getAKREDITASI())
             toast(getString(R.string.tambah_favorite))
         } catch (e: SQLiteException) {
             Log.d(TAG, e.message)
