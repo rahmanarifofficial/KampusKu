@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import com.onesignal.OneSignal
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AuthentikasiFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa.BeasiswaFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.KampusFragment
@@ -19,7 +20,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        OneSignal.startInit(this)
+            .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+            .unsubscribeWhenNotificationsAreDisabled(true)
+            .init();
         bottom_navigation.inflateMenu(R.menu.menu_bottom_navigation);
         fragmentManager = supportFragmentManager;
 
