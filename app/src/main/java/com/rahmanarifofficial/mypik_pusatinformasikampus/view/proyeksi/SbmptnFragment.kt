@@ -2,7 +2,7 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.proyeksi
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AuthentikasiF
 import kotlinx.android.synthetic.main.fragment_sbmptn.*
 import org.jetbrains.anko.support.v4.startActivity
 
-class SbmptnFragment : Fragment() {
+class SbmptnFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var inputNilaiDialog: Dialog
 
@@ -54,7 +54,7 @@ class SbmptnFragment : Fragment() {
         }
     }
 
-    fun updateUI(fragment: Fragment) {
+    fun updateUI(fragment: androidx.fragment.app.Fragment) {
         val fm = fragmentManager
         val ft = fm!!.beginTransaction()
         ft.replace(R.id.main_container, fragment)

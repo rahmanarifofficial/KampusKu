@@ -1,9 +1,9 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.favorites
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +16,9 @@ import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.startActivity
 
-class BeasiswaFavoritesFragment : Fragment() {
+class BeasiswaFavoritesFragment : androidx.fragment.app.Fragment() {
     private var favoritesBeasiswa = mutableListOf<BeasiswaDB>()
-    private lateinit var rv_list_beasiswa_favorite: RecyclerView
+    private lateinit var rv_list_beasiswa_favorite: androidx.recyclerview.widget.RecyclerView
     private lateinit var adapter: FavoriteBeasiswaListAdapter
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class BeasiswaFavoritesFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_beasiswa_favorites, container, false)
         rv_list_beasiswa_favorite = v.findViewById(R.id.rv_list_beasiswa_favorite)
         rv_list_beasiswa_favorite.setHasFixedSize(true)
-        rv_list_beasiswa_favorite.layoutManager = LinearLayoutManager(activity)
+        rv_list_beasiswa_favorite.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         adapter = FavoriteBeasiswaListAdapter(favoritesBeasiswa) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.idBeasiswa}")
         }

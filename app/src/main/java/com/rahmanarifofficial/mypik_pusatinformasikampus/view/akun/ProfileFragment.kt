@@ -1,8 +1,8 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.v4.app.Fragment
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.view.favorites.Favorite
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.support.v4.startActivity
 
-class ProfileFragment : Fragment(), ProfileView, View.OnClickListener {
+class ProfileFragment : androidx.fragment.app.Fragment(), ProfileView, View.OnClickListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var loginPrefs: LoginPreferences

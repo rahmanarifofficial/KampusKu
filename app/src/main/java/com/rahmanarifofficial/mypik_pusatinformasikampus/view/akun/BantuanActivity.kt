@@ -1,6 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R

@@ -1,7 +1,7 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import org.jetbrains.anko.support.v4.toast
 
 
-class AuthentikasiFragment : Fragment(), View.OnClickListener, AkunView {
+class AuthentikasiFragment : androidx.fragment.app.Fragment(), View.OnClickListener, AkunView {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
@@ -141,7 +141,7 @@ class AuthentikasiFragment : Fragment(), View.OnClickListener, AkunView {
         pbAuth.visibility = View.INVISIBLE
     }
 
-    fun showFragment(fragment: Fragment) {
+    fun showFragment(fragment: androidx.fragment.app.Fragment) {
         val fm = fragmentManager
         val ft = fm!!.beginTransaction()
         ft.replace(R.id.main_container, fragment)

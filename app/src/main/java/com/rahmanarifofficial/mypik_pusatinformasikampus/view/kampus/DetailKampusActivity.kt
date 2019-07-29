@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteException
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -108,7 +108,7 @@ class DetailKampusActivity : AppCompatActivity(),
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupViewPager(pager: ViewPager) {
+    private fun setupViewPager(pager: androidx.viewpager.widget.ViewPager) {
         val adapter = ProdiPagerAdapter(supportFragmentManager)
 
         val saintek = ProdiSaintekFragment.saintekIntance(kode)

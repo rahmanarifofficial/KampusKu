@@ -1,11 +1,11 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.SearchView
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -19,14 +19,14 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
 
-class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener, SearchView.OnQueryTextListener {
+class TrendFragment : androidx.fragment.app.Fragment(), TrendView, AdapterView.OnItemSelectedListener, SearchView.OnQueryTextListener {
 
     private lateinit var adapter: JurusanPopulerListAdapter
     private lateinit var adapterJurusan: JurusanListAdapter
-    private lateinit var swiperefresh_trend: SwipeRefreshLayout
+    private lateinit var swiperefresh_trend: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     private lateinit var btn_refresh_trend: Button
-    private lateinit var rv_list_jurusan: RecyclerView
-    private lateinit var rv_list_jurusan_populer: RecyclerView
+    private lateinit var rv_list_jurusan: androidx.recyclerview.widget.RecyclerView
+    private lateinit var rv_list_jurusan_populer: androidx.recyclerview.widget.RecyclerView
     private lateinit var spinner_kelompok_jurusan: Spinner
 
     private var jurusanPopulerList: MutableList<Jurusan> = mutableListOf()
@@ -64,7 +64,11 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
         adapter = JurusanPopulerListAdapter(jurusanPopulerList) {
             activity?.startActivity<DetailJurusanActivity>("kode" to "${it.id}")
         }
-        rv_list_jurusan_populer.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        rv_list_jurusan_populer.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            activity,
+            androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+            false
+        )
         rv_list_jurusan_populer.adapter = adapter
         swiperefresh_trend.onRefresh {
             TrendPresenter.showPopulerJurusan(this)
@@ -75,7 +79,7 @@ class TrendFragment : Fragment(), TrendView, AdapterView.OnItemSelectedListener,
         adapterJurusan = JurusanListAdapter(jurusanList) {
             activity?.startActivity<DetailJurusanActivity>("kode" to "${it.id}")
         }
-        rv_list_jurusan.layoutManager = LinearLayoutManager(activity)
+        rv_list_jurusan.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         rv_list_jurusan.adapter = adapterJurusan
         btn_refresh_trend.setOnClickListener {
             btn_refresh_trend.visibility = View.GONE

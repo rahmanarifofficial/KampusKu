@@ -2,9 +2,9 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.favorites
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +19,10 @@ import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.startActivity
 
-class KampusFavoriteFragment : Fragment() {
+class KampusFavoriteFragment : androidx.fragment.app.Fragment() {
 
     private var favoritesKampus = mutableListOf<KampusDB>()
-    private lateinit var rv_list_kampus_favorite: RecyclerView
+    private lateinit var rv_list_kampus_favorite: androidx.recyclerview.widget.RecyclerView
     private lateinit var adapter: FavoriteKampusListAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,7 +30,7 @@ class KampusFavoriteFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_kampus_favorite, container, false)
         rv_list_kampus_favorite = v.findViewById(R.id.rv_list_kampus_favorite)
         rv_list_kampus_favorite.setHasFixedSize(true)
-        rv_list_kampus_favorite.layoutManager = LinearLayoutManager(activity)
+        rv_list_kampus_favorite.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         adapter = FavoriteKampusListAdapter(favoritesKampus) {
             activity?.startActivity<DetailKampusActivity>("kode" to "${it.kode}")
         }

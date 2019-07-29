@@ -1,9 +1,9 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.onesignal.OneSignal
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AuthentikasiFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa.BeasiswaFragment
@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var fragment: Fragment
-    private lateinit var fragmentManager: FragmentManager
+    private lateinit var fragment: androidx.fragment.app.Fragment
+    private lateinit var fragmentManager: androidx.fragment.app.FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

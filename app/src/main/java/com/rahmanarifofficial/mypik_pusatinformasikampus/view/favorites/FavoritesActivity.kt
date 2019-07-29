@@ -1,8 +1,8 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.favorites
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.FavoritePagerAdapter
@@ -31,7 +31,7 @@ class FavoritesActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupViewPager(pager: ViewPager) {
+    private fun setupViewPager(pager: androidx.viewpager.widget.ViewPager) {
         val adapter = FavoritePagerAdapter(supportFragmentManager)
 
         val kampus = KampusFavoriteFragment()

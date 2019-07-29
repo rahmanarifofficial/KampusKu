@@ -1,6 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_beasiswa_inactive.view.*
 
 
 class BeasiswaInActiveListAdapter(private var beasiswa: List<Beasiswa>, private val listener: (Beasiswa) -> Unit) :
-    RecyclerView.Adapter<BeasiswaInActiveListAdapter.BeasiswaViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<BeasiswaInActiveListAdapter.BeasiswaViewHolder>() {
 
     companion object {
         val BEASISWA_ACTIVE_CODE = 1
@@ -40,7 +40,7 @@ class BeasiswaInActiveListAdapter(private var beasiswa: List<Beasiswa>, private 
         return p0.bindBeasiswa(beasiswa[p1], listener)
     }
 
-    class BeasiswaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class BeasiswaViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         fun bindBeasiswa(beasiswa: Beasiswa, listener: (Beasiswa) -> Unit) {
             itemView.tv_nama_beasiswa_inactive.text = beasiswa.beasiswa
             itemView.tv_nama_penyelenggara_beasiswa_inactive.text = beasiswa.penyelenggara

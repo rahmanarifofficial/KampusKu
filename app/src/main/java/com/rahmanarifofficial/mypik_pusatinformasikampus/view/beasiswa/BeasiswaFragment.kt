@@ -1,11 +1,11 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.SearchView
 import android.util.Log
 import android.view.*
 import android.view.View.GONE
@@ -21,12 +21,12 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import java.util.*
 
-class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
+class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
 
-    private lateinit var swiperefresh_beasiswa: SwipeRefreshLayout
+    private lateinit var swiperefresh_beasiswa: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     private lateinit var btn_refresh_beasiswa: Button
-    private lateinit var rv_list_beasiswa: RecyclerView
-    private lateinit var rv_list_inactive_beasiswa: RecyclerView
+    private lateinit var rv_list_beasiswa: androidx.recyclerview.widget.RecyclerView
+    private lateinit var rv_list_inactive_beasiswa: androidx.recyclerview.widget.RecyclerView
     private lateinit var adapterBeasiswaActive: BeasiswaListAdapter
     private lateinit var adapterBeasiswaInActive: BeasiswaInActiveListAdapter
 
@@ -52,12 +52,12 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
         adapterBeasiswaActive = BeasiswaListAdapter(beasiswaList) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
         }
-        rv_list_beasiswa.layoutManager = LinearLayoutManager(activity)
+        rv_list_beasiswa.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         rv_list_beasiswa.adapter = adapterBeasiswaActive
         adapterBeasiswaInActive = BeasiswaInActiveListAdapter(inActiveBeasiswaList) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
         }
-        rv_list_inactive_beasiswa.layoutManager = LinearLayoutManager(activity)
+        rv_list_inactive_beasiswa.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         rv_list_inactive_beasiswa.adapter = adapterBeasiswaInActive
         swiperefresh_beasiswa.onRefresh {
             BeasiswaPresenter.showBeasiswa(this)

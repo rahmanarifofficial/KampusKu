@@ -1,6 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.db.JurusanDB
 import kotlinx.android.synthetic.main.item_jurusan.view.*
 
 class FavoriteJurusanListAdapter(private val jurusanList: List<JurusanDB>, private val listener: (JurusanDB) -> Unit) :
-    RecyclerView.Adapter<FavoriteJurusanListAdapter.FavoriteViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<FavoriteJurusanListAdapter.FavoriteViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): FavoriteViewHolder {
         return FavoriteJurusanListAdapter.FavoriteViewHolder(
             LayoutInflater.from(p0.context).inflate(
@@ -26,7 +26,7 @@ class FavoriteJurusanListAdapter(private val jurusanList: List<JurusanDB>, priva
         p0.bindJurusan(jurusanList[p1], listener)
     }
 
-    class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class FavoriteViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         fun bindJurusan(jurusan: JurusanDB, listener: (JurusanDB) -> Unit) {
             itemView.tv_nama_jurusan.text = jurusan.jurusan
             itemView.tv_kelompok_jurusan.text = jurusan.namaKelompok

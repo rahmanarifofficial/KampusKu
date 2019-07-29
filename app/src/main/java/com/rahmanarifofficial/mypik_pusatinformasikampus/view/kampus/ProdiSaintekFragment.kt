@@ -1,10 +1,10 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialog
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +16,10 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Prodi
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.KampusPresenter
 import java.text.DecimalFormat
 
-class ProdiSaintekFragment : Fragment(),
+class ProdiSaintekFragment : androidx.fragment.app.Fragment(),
     ProdiKampusView {
 
-    private lateinit var list_prodi_ptn: RecyclerView
+    private lateinit var list_prodi_ptn: androidx.recyclerview.widget.RecyclerView
     private lateinit var adapter: ProdiKampusListAdapter
     private lateinit var tvPTN: TextView
     private lateinit var tvProdi: TextView
@@ -68,7 +68,7 @@ class ProdiSaintekFragment : Fragment(),
             dialog.setContentView(view)
             dialog.show()
         }
-        list_prodi_ptn.layoutManager = LinearLayoutManager(activity)
+        list_prodi_ptn.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         list_prodi_ptn.adapter = adapter
     }
 

@@ -1,6 +1,6 @@
 package com.rahmanarifofficial.mypik_pusatinformasikampus.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_ptn.view.*
 
 class FavoriteKampusListAdapter(private val kampusList: List<KampusDB>, private val listener: (KampusDB) -> Unit) :
-    RecyclerView.Adapter<FavoriteKampusListAdapter.FavoriteViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<FavoriteKampusListAdapter.FavoriteViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): FavoriteViewHolder {
         return FavoriteViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_ptn, p0, false))
     }
@@ -23,7 +23,7 @@ class FavoriteKampusListAdapter(private val kampusList: List<KampusDB>, private 
         p0.bindKampus(kampusList[p1], listener)
     }
 
-    class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class FavoriteViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         fun bindKampus(kampus: KampusDB, listener: (KampusDB) -> Unit) {
             itemView.tv_ptn.text = kampus.nama
             itemView.tv_link_ptn.text = kampus.akreditasi

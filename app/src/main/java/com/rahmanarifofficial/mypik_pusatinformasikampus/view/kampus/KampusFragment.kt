@@ -2,11 +2,11 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.SearchView
 import android.util.Log
 import android.view.*
 import android.widget.Button
@@ -23,11 +23,11 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
-class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
+class KampusFragment : androidx.fragment.app.Fragment(), KampusView, SearchView.OnQueryTextListener {
 
-    private lateinit var swiperefresh_ptn: SwipeRefreshLayout
+    private lateinit var swiperefresh_ptn: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     private lateinit var btn_refresh_kampus: Button
-    private lateinit var list_ptn: RecyclerView
+    private lateinit var list_ptn: androidx.recyclerview.widget.RecyclerView
     private lateinit var adapter: KampusListAdapter
 
     private var ptnList: MutableList<PTN> = mutableListOf()
@@ -48,7 +48,7 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         adapter = KampusListAdapter(ptnList) {
             activity?.startActivity<DetailKampusActivity>("kode" to "${it.getKODE()}")
         }
-        list_ptn.layoutManager = LinearLayoutManager(activity)
+        list_ptn.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         list_ptn.adapter = adapter
         swiperefresh_ptn.onRefresh {
             KampusPresenter.getListPTN(this)

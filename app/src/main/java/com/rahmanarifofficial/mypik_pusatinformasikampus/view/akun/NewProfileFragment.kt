@@ -7,8 +7,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AlertDialog
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,7 +26,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-class NewProfileFragment : Fragment(), NewProfileView {
+class NewProfileFragment : androidx.fragment.app.Fragment(), NewProfileView {
 
     private lateinit var foto: Uri
     private val GALLERY = 1

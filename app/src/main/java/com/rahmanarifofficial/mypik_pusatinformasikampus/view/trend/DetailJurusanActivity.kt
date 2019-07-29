@@ -2,9 +2,9 @@ package com.rahmanarifofficial.mypik_pusatinformasikampus.view.trend
 
 import android.database.sqlite.SQLiteException
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -46,7 +46,7 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         adapter = JurusanKampusListAdapter(prodiList) {
             startActivity<DetailKampusActivity>("kode" to "${it.getKodePtn()}")
         }
-        rv_list_ptn_jurusan.layoutManager = LinearLayoutManager(this)
+        rv_list_ptn_jurusan.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         rv_list_ptn_jurusan.adapter = adapter
         swiperefresh_detail_jurusan.onRefresh {
             TrendPresenter.showDetailJurusan(idJurusan, this)
