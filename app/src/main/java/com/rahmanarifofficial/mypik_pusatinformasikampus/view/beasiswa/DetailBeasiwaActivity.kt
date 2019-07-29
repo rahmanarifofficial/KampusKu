@@ -21,7 +21,7 @@ import org.jetbrains.anko.db.select
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
 
-class DetailBeasiwaActivity : AppCompatActivity(), BeasiswaView {
+class DetailBeasiwaActivity : AppCompatActivity(), DetailBeasiswaView {
 
     private lateinit var beasiswa: Beasiswa
 

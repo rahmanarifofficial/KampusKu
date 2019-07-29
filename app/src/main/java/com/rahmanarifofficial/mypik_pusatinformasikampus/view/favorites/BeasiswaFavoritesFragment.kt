@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.FavoriteBeasiswaListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.db.BeasiswaDB
-import com.rahmanarifofficial.mypik_pusatinformasikampus.db.JurusanDB
 import com.rahmanarifofficial.mypik_pusatinformasikampus.db.database
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa.DetailBeasiwaActivity
 import org.jetbrains.anko.db.classParser
@@ -18,7 +17,7 @@ import org.jetbrains.anko.db.select
 import org.jetbrains.anko.startActivity
 
 class BeasiswaFavoritesFragment : Fragment() {
-    private var favoritesJurusan = mutableListOf<BeasiswaDB>()
+    private var favoritesBeasiswa = mutableListOf<BeasiswaDB>()
     private lateinit var rv_list_beasiswa_favorite: RecyclerView
     private lateinit var adapter: FavoriteBeasiswaListAdapter
 
@@ -30,7 +29,7 @@ class BeasiswaFavoritesFragment : Fragment() {
         rv_list_beasiswa_favorite = v.findViewById(R.id.rv_list_beasiswa_favorite)
         rv_list_beasiswa_favorite.setHasFixedSize(true)
         rv_list_beasiswa_favorite.layoutManager = LinearLayoutManager(activity)
-        adapter = FavoriteBeasiswaListAdapter(favoritesJurusan) {
+        adapter = FavoriteBeasiswaListAdapter(favoritesBeasiswa) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.idBeasiswa}")
         }
         rv_list_beasiswa_favorite.adapter = adapter
@@ -40,10 +39,11 @@ class BeasiswaFavoritesFragment : Fragment() {
     }
 
     private fun showFavorite() {
+        favoritesBeasiswa.clear()
         context?.database?.use {
             val result = select(BeasiswaDB.TABLE_BEASISWA)
             val favorite = result.parseList(classParser<BeasiswaDB>())
-            favoritesJurusan.addAll(favorite)
+            favoritesBeasiswa.addAll(favorite)
             adapter.notifyDataSetChanged()
         }
     }

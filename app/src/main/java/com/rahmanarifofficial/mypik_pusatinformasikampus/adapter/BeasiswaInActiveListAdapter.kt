@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Beasiswa
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_beasiswa_active.view.*
 import kotlinx.android.synthetic.main.item_beasiswa_inactive.view.*
 
-class BeasiswaListAdapter(private var beasiswa: List<Beasiswa>, private val listener: (Beasiswa) -> Unit) :
-    RecyclerView.Adapter<BeasiswaListAdapter.BeasiswaViewHolder>() {
+
+class BeasiswaInActiveListAdapter(private var beasiswa: List<Beasiswa>, private val listener: (Beasiswa) -> Unit) :
+    RecyclerView.Adapter<BeasiswaInActiveListAdapter.BeasiswaViewHolder>() {
 
     companion object {
         val BEASISWA_ACTIVE_CODE = 1
@@ -19,9 +19,9 @@ class BeasiswaListAdapter(private var beasiswa: List<Beasiswa>, private val list
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeasiswaViewHolder {
-        return BeasiswaListAdapter.BeasiswaViewHolder(
+        return BeasiswaInActiveListAdapter.BeasiswaViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_beasiswa_active,
+                R.layout.item_beasiswa_inactive,
                 parent,
                 false
             )
@@ -42,18 +42,18 @@ class BeasiswaListAdapter(private var beasiswa: List<Beasiswa>, private val list
 
     class BeasiswaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindBeasiswa(beasiswa: Beasiswa, listener: (Beasiswa) -> Unit) {
-            itemView.tv_nama_beasiswa.text = beasiswa.beasiswa
-            itemView.tv_nama_penyelenggara_beasiswa.text = beasiswa.penyelenggara
-            itemView.tv_deadline_beasiswa.text = beasiswa.deadline
-            itemView.tv_jenis_beasiswa.text = beasiswa.jenisPembiayaan
-            itemView.tv_kategori_beasiswa.text = beasiswa.kategori
+            itemView.tv_nama_beasiswa_inactive.text = beasiswa.beasiswa
+            itemView.tv_nama_penyelenggara_beasiswa_inactive.text = beasiswa.penyelenggara
+            itemView.tv_deadline_beasiswa_inactive.text = beasiswa.deadline
+            itemView.tv_jenis_beasiswa_inactive.text = beasiswa.jenisPembiayaan
+            itemView.tv_kategori_beasiswa_inactive.text = beasiswa.kategori
             if (!beasiswa.linkBanner.isNullOrEmpty()) {
                 Picasso.get()
                     .load(beasiswa.linkBanner)
                     .placeholder(R.drawable.ic_scholars)
                     .centerCrop()
                     .fit()
-                    .into(itemView.iv_foto_banner_beasiswa)
+                    .into(itemView.iv_foto_banner_beasiswa_inactive)
             }
             itemView.setOnClickListener {
                 listener(beasiswa)

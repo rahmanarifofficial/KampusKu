@@ -12,21 +12,26 @@ import android.view.View.GONE
 import android.widget.Button
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
+import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.BeasiswaInActiveListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.BeasiswaListAdapter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Beasiswa
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.BeasiswaPresenter
-import kotlinx.android.synthetic.main.fragment_beasiswa.*
+import com.rahmanarifofficial.mypik_pusatinformasikampus.util.TAG.TAG
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
+import java.util.*
 
 class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
 
     private lateinit var swiperefresh_beasiswa: SwipeRefreshLayout
     private lateinit var btn_refresh_beasiswa: Button
     private lateinit var rv_list_beasiswa: RecyclerView
-    private lateinit var adapter: BeasiswaListAdapter
+    private lateinit var rv_list_inactive_beasiswa: RecyclerView
+    private lateinit var adapterBeasiswaActive: BeasiswaListAdapter
+    private lateinit var adapterBeasiswaInActive: BeasiswaInActiveListAdapter
 
     private var beasiswaList: MutableList<Beasiswa> = mutableListOf()
+    private var inActiveBeasiswaList: MutableList<Beasiswa> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -35,6 +40,7 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
         swiperefresh_beasiswa = v.findViewById(R.id.swiperefresh_beasiswa)
         btn_refresh_beasiswa = v.findViewById(R.id.btn_refresh_beasiswa)
         rv_list_beasiswa = v.findViewById(R.id.rv_list_beasiswa)
+        rv_list_inactive_beasiswa = v.findViewById(R.id.rv_list_inactive_beasiswa)
         return v
     }
 
@@ -42,18 +48,26 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
         BeasiswaPresenter.showBeasiswa(this)
-        adapter = BeasiswaListAdapter(beasiswaList) {
+        BeasiswaPresenter.showInActiveBeasiswa(this)
+        adapterBeasiswaActive = BeasiswaListAdapter(beasiswaList) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
         }
         rv_list_beasiswa.layoutManager = LinearLayoutManager(activity)
-        rv_list_beasiswa.adapter = adapter
+        rv_list_beasiswa.adapter = adapterBeasiswaActive
+        adapterBeasiswaInActive = BeasiswaInActiveListAdapter(inActiveBeasiswaList) {
+            activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
+        }
+        rv_list_inactive_beasiswa.layoutManager = LinearLayoutManager(activity)
+        rv_list_inactive_beasiswa.adapter = adapterBeasiswaInActive
         swiperefresh_beasiswa.onRefresh {
             BeasiswaPresenter.showBeasiswa(this)
+            BeasiswaPresenter.showInActiveBeasiswa(this)
         }
         btn_refresh_beasiswa.visibility = GONE
         btn_refresh_beasiswa.setOnClickListener {
             btn_refresh_beasiswa.visibility = View.GONE
             BeasiswaPresenter.showBeasiswa(this)
+            BeasiswaPresenter.showInActiveBeasiswa(this)
         }
     }
 
@@ -79,11 +93,19 @@ class BeasiswaFragment : Fragment(), BeasiswaView, SearchView.OnQueryTextListene
         swiperefresh_beasiswa.isRefreshing = false
         beasiswaList.clear()
         beasiswaList.addAll(data)
-        adapter.notifyDataSetChanged()
+        adapterBeasiswaActive.notifyDataSetChanged()
+    }
+
+    override fun showInActiveBeasiswa(data: List<Beasiswa>) {
+//        swiperefresh_beasiswa.isRefreshing = false
+        inActiveBeasiswaList.clear()
+        inActiveBeasiswaList.addAll(data)
+        Collections.reverse(inActiveBeasiswaList)
+        adapterBeasiswaInActive.notifyDataSetChanged()
     }
 
     override fun showError(data: String) {
-        Log.d("TAGERROR", data)
+        Log.d(TAG, data)
         swiperefresh_beasiswa.isRefreshing = false
         btn_refresh_beasiswa.visibility = View.VISIBLE
     }

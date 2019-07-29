@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.adapter.KampusListAdapter
@@ -37,8 +38,7 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         swiperefresh_ptn = v.findViewById(R.id.swiperefresh_ptn)
         list_ptn = v.findViewById(R.id.rv_list_ptn)
         btn_refresh_kampus = v.findViewById(R.id.btn_refresh_kampus)
-
-        return v;
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -101,5 +101,4 @@ class KampusFragment : Fragment(), KampusView, SearchView.OnQueryTextListener {
         }
         return false
     }
-
 }

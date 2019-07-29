@@ -40,6 +40,7 @@ class KampusFavoriteFragment : Fragment() {
     }
 
     private fun showFavorite() {
+        favoritesKampus.clear()
         context?.database?.use {
             val result = select(KampusDB.TABLE_KAMPUS)
             val favorite = result.parseList(classParser<KampusDB>())

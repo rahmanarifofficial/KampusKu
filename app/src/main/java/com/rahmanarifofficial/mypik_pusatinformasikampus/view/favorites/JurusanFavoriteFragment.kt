@@ -36,6 +36,7 @@ class JurusanFavoriteFragment : Fragment() {
     }
 
     private fun showFavorite() {
+        favoritesJurusan.clear()
         context?.database?.use {
             val result = select(JurusanDB.TABLE_JURUSAN)
             val favorite = result.parseList(classParser<JurusanDB>())
