@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.onesignal.OneSignal
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.AuthentikasiFragment
+import com.rahmanarifofficial.mypik_pusatinformasikampus.view.akun.ProfileFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.beasiswa.BeasiswaFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.kampus.KampusFragment
 import com.rahmanarifofficial.mypik_pusatinformasikampus.view.proyeksi.SbmptnFragment
@@ -41,10 +42,8 @@ class MainActivity : AppCompatActivity() {
                     TrendFragment()
                 R.id.beasiswa_menu -> fragment =
                     BeasiswaFragment()
-                R.id.sbmptn_menu -> fragment =
-                    SbmptnFragment()
                 R.id.akun_menu -> fragment =
-                    AuthentikasiFragment()
+                    ProfileFragment()
             }
             val transaction = fragmentManager.beginTransaction()
             transaction.replace(R.id.main_container, fragment)

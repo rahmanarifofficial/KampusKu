@@ -89,9 +89,15 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         swiperefresh_detail_jurusan.isRefreshing = false
     }
 
-    override fun showJurusan(data: List<Jurusan>) {
+    override fun showJurusan(data: List<Jurusan>?) {
         if (!data.isNullOrEmpty()) {
-            jurusan = Jurusan(data[0].id, data[0].jurusan, data[0].namaKelompok, data[0].mapel, data[0].tipe)
+            jurusan = Jurusan(
+                data[0].id,
+                data[0].jurusan,
+                data[0].namaKelompok,
+                data[0].mapel,
+                data[0].tipe
+            )
             swiperefresh_detail_jurusan.isRefreshing = false
             TrendPresenter.showJurusanPTN(data[0].jurusan!!, this)
             supportActionBar?.title = data[0].jurusan
@@ -121,14 +127,16 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         }
     }
 
-    override fun showUniv(data: List<Prodi>) {
+    override fun showUniv(data: List<Prodi>?) {
         prodiList.clear()
-        prodiList.addAll(data)
+        if (!data.isNullOrEmpty()) {
+            prodiList.addAll(data)
+        }
         adapter.notifyDataSetChanged()
 
     }
 
-    override fun showError(data: String) {
+    override fun showError(data: String?) {
         Log.d(TAG, data)
     }
 
@@ -136,7 +144,8 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
         if (isFavorite)
             menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite)
         else
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border)
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_favorite_border)
     }
 
     private fun favoriteState() {
@@ -175,7 +184,11 @@ class DetailJurusanActivity : AppCompatActivity(), DetailJurusanView {
     private fun removeFromFavorite() {
         try {
             database.use {
-                delete(JurusanDB.TABLE_JURUSAN, "(ID_JURUSAN = {idJurusan})", "idJurusan" to idJurusan)
+                delete(
+                    JurusanDB.TABLE_JURUSAN,
+                    "(ID_JURUSAN = {idJurusan})",
+                    "idJurusan" to idJurusan
+                )
             }
             toast(getString(R.string.hapus_favorite))
         } catch (e: SQLiteException) {

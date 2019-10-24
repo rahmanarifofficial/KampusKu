@@ -18,12 +18,12 @@ class TrendPresenter() {
             val call = apiService?.getPopulerJurusan()
             call?.enqueue(object : Callback<List<Jurusan>> {
                 override fun onResponse(call: Call<List<Jurusan>>, response: Response<List<Jurusan>>) {
-                    view.showPopulerJurusan(response.body()!!)
+                    view.showPopulerJurusan(response.body())
                     view.hideLoading()
                 }
 
                 override fun onFailure(call: Call<List<Jurusan>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
             })
@@ -35,12 +35,12 @@ class TrendPresenter() {
             val call = apiService?.getJurusanList(id)
             call?.enqueue(object : Callback<List<Jurusan>> {
                 override fun onFailure(call: Call<List<Jurusan>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Jurusan>>, response: Response<List<Jurusan>>) {
-                    view.showJurusanList(response.body()!!)
+                    view.showJurusanList(response.body())
                     view.hideLoading()
                 }
             })
@@ -52,12 +52,12 @@ class TrendPresenter() {
             val call = apiService?.getSearchJurusan(query)
             call?.enqueue(object : Callback<List<Jurusan>> {
                 override fun onFailure(call: Call<List<Jurusan>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Jurusan>>, response: Response<List<Jurusan>>) {
-                    view.showJurusanList(response.body()!!)
+                    view.showJurusanList(response.body())
                     view.hideLoading()
                 }
             })
@@ -69,12 +69,12 @@ class TrendPresenter() {
             val call = apiService?.getDetailJurusan(id)
             call?.enqueue(object : Callback<List<Jurusan>> {
                 override fun onFailure(call: Call<List<Jurusan>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Jurusan>>, response: Response<List<Jurusan>>) {
-                    view.showJurusan(response.body()!!)
+                    view.showJurusan(response.body())
                     view.hideLoading()
                 }
             })
@@ -86,12 +86,12 @@ class TrendPresenter() {
             val call = apiService?.getProdiListByName(nama)
             call?.enqueue(object : Callback<List<Prodi>>{
                 override fun onFailure(call: Call<List<Prodi>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Prodi>>, response: Response<List<Prodi>>) {
-                    view.showUniv(response.body()!!)
+                    view.showUniv(response.body())
                     view.hideLoading()
                 }
             })

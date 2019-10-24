@@ -96,7 +96,7 @@ class TrendFragment : androidx.fragment.app.Fragment(), TrendView, AdapterView.O
         swiperefresh_trend.isRefreshing = false
     }
 
-    override fun showPopulerJurusan(data: List<Jurusan>) {
+    override fun showPopulerJurusan(data: List<Jurusan>?) {
         swiperefresh_trend.isRefreshing = false
         if (!data.isNullOrEmpty()) {
             jurusanPopulerList.clear()
@@ -105,13 +105,14 @@ class TrendFragment : androidx.fragment.app.Fragment(), TrendView, AdapterView.O
         }
     }
 
-    override fun showJurusanList(data: List<Jurusan>) {
+    override fun showJurusanList(data: List<Jurusan>?) {
         jurusanList.clear()
-        jurusanList.addAll(data)
+        if (data!=null){
+        jurusanList.addAll(data)}
         adapterJurusan.notifyDataSetChanged()
     }
 
-    override fun showError(data: String) {
+    override fun showError(data: String?) {
         Log.d("TAGERROR", data)
         swiperefresh_trend.isRefreshing = false
         btn_refresh_trend.visibility = View.VISIBLE
@@ -125,7 +126,7 @@ class TrendFragment : androidx.fragment.app.Fragment(), TrendView, AdapterView.O
         TrendPresenter.getListJurusan(position + 1, this);
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.inflate(R.menu.menu_home, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search_jurusan)

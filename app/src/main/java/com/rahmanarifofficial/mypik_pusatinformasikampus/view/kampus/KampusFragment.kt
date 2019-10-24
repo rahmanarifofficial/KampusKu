@@ -23,7 +23,8 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 
-class KampusFragment : androidx.fragment.app.Fragment(), KampusView, SearchView.OnQueryTextListener {
+class KampusFragment : androidx.fragment.app.Fragment(), KampusView,
+    SearchView.OnQueryTextListener {
 
     private lateinit var swiperefresh_ptn: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     private lateinit var btn_refresh_kampus: Button
@@ -32,7 +33,11 @@ class KampusFragment : androidx.fragment.app.Fragment(), KampusView, SearchView.
 
     private var ptnList: MutableList<PTN> = mutableListOf()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_kampus))
         val v = inflater.inflate(R.layout.fragment_kampus, container, false)
         swiperefresh_ptn = v.findViewById(R.id.swiperefresh_ptn)
@@ -59,7 +64,7 @@ class KampusFragment : androidx.fragment.app.Fragment(), KampusView, SearchView.
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.inflate(R.menu.menu_home, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search)
@@ -76,10 +81,12 @@ class KampusFragment : androidx.fragment.app.Fragment(), KampusView, SearchView.
         swiperefresh_ptn.isRefreshing = false
     }
 
-    override fun showPtnList(data: List<PTN>) {
+    override fun showPtnList(data: List<PTN>?) {
         swiperefresh_ptn.isRefreshing = false
         ptnList.clear()
-        ptnList.addAll(data)
+        if (data != null) {
+            ptnList.addAll(data)
+        }
         adapter.notifyDataSetChanged()
     }
 

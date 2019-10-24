@@ -13,10 +13,6 @@
             android:title="@string/menu_beasiswa"
             android:icon="@drawable/ic_scholarship"/>
     <item
-            android:id="@+id/sbmptn_menu"
-            android:title="@string/menu_sbmptn"
-            android:icon="@drawable/ic_sbmptn"/>
-    <item
             android:id="@+id/akun_menu"
             android:title="@string/menu_akun"
             android:icon="@drawable/ic_user_avatar"/>

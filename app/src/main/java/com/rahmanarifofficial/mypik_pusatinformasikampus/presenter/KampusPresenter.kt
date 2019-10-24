@@ -24,7 +24,7 @@ class KampusPresenter() {
                 }
 
                 override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
-                    view.showPtnList(response.body()!!)
+                    view.showPtnList(response.body())
                     view.hideLoading()
                 }
             })
@@ -41,7 +41,7 @@ class KampusPresenter() {
                 }
 
                 override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
-                    view.showPtnList(response.body()!!)
+                    view.showPtnList(response.body())
                     view.hideLoading()
                 }
             })
@@ -52,11 +52,11 @@ class KampusPresenter() {
             val call = apiService?.getDetailPTN(kode)
             call?.enqueue(object : Callback<List<PTN>> {
                 override fun onFailure(call: Call<List<PTN>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                 }
 
                 override fun onResponse(call: Call<List<PTN>>, response: Response<List<PTN>>) {
-                    view.showPtn(response.body()!!)
+                    view.showPtn(response.body())
                 }
             })
         }
@@ -66,11 +66,11 @@ class KampusPresenter() {
             val call = apiService?.getProdiList(kode, tipe)
             call?.enqueue(object : Callback<List<Prodi>> {
                 override fun onResponse(call: Call<List<Prodi>>, response: Response<List<Prodi>>) {
-                    view.showProdi(response.body()!!)
+                    view.showProdi(response.body())
                 }
 
                 override fun onFailure(call: Call<List<Prodi>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                 }
             })
         }
@@ -80,11 +80,11 @@ class KampusPresenter() {
             val call = apiService?.getDetailProdi(kode)
             call?.enqueue(object : Callback<List<Prodi>> {
                 override fun onResponse(call: Call<List<Prodi>>, response: Response<List<Prodi>>) {
-                    view.showDetailProdi(response.body()!!)
+                    view.showDetailProdi(response.body())
                 }
 
                 override fun onFailure(call: Call<List<Prodi>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                 }
             })
         }

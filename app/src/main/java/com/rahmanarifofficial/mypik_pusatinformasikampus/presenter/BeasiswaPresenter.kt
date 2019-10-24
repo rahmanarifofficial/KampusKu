@@ -18,7 +18,7 @@ class BeasiswaPresenter {
             val call = apiService?.getBeasiswaList()
             call?.enqueue(object : Callback<List<Beasiswa>> {
                 override fun onFailure(call: Call<List<Beasiswa>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
@@ -27,7 +27,7 @@ class BeasiswaPresenter {
                     for (item in response.body()!!) {
                         val dateDeadlineBeasiswa = DateTime.toDate(item.deadline)
                         val dateNow = DateTime.toDate(DateTime.DATENOW())
-                        if (dateDeadlineBeasiswa.after(dateNow)) {
+                        if (dateDeadlineBeasiswa.after(dateNow) || dateDeadlineBeasiswa.equals(dateNow)) {
                             listBeasiswa.add(item)
                         }
                     }
@@ -43,7 +43,7 @@ class BeasiswaPresenter {
             val call = apiService?.getBeasiswaList()
             call?.enqueue(object : Callback<List<Beasiswa>> {
                 override fun onFailure(call: Call<List<Beasiswa>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
@@ -68,12 +68,12 @@ class BeasiswaPresenter {
             val call = apiService?.getSearchBeasiswa(query)
             call?.enqueue(object : Callback<List<Beasiswa>> {
                 override fun onFailure(call: Call<List<Beasiswa>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Beasiswa>>, response: Response<List<Beasiswa>>) {
-                    view.showBeasiswa(response.body()!!)
+                    view.showBeasiswa(response.body())
                     view.hideLoading()
                 }
             })
@@ -85,12 +85,12 @@ class BeasiswaPresenter {
             val call = apiService?.getDetailBeasiswa(id)
             call?.enqueue(object : Callback<List<Beasiswa>> {
                 override fun onFailure(call: Call<List<Beasiswa>>, t: Throwable) {
-                    view.showError(t.message!!)
+                    view.showError(t.message)
                     view.hideLoading()
                 }
 
                 override fun onResponse(call: Call<List<Beasiswa>>, response: Response<List<Beasiswa>>) {
-                    view.showBeasiswa(response.body()!!)
+                    view.showBeasiswa(response.body())
                     view.hideLoading()
                 }
             })

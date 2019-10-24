@@ -75,7 +75,7 @@ class DetailBeasiwaActivity : AppCompatActivity(), DetailBeasiswaView {
         swiperefresh_detail_beasiswa.isRefreshing = false
     }
 
-    override fun showBeasiswa(data: List<Beasiswa>) {
+    override fun showBeasiswa(data: List<Beasiswa>?) {
         if (!data.isNullOrEmpty()) {
             beasiswa = Beasiswa(
                 data[0].id,
@@ -99,7 +99,7 @@ class DetailBeasiwaActivity : AppCompatActivity(), DetailBeasiswaView {
         }
     }
 
-    override fun showError(data: String) {
+    override fun showError(data: String?) {
         Log.d(TAG, data)
     }
 

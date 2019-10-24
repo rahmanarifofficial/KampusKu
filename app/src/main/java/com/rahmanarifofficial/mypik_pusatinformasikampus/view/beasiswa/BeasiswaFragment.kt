@@ -21,7 +21,8 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.onRefresh
 import java.util.*
 
-class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchView.OnQueryTextListener {
+class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView,
+    SearchView.OnQueryTextListener {
 
     private lateinit var swiperefresh_beasiswa: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     private lateinit var btn_refresh_beasiswa: Button
@@ -33,7 +34,11 @@ class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchV
     private var beasiswaList: MutableList<Beasiswa> = mutableListOf()
     private var inActiveBeasiswaList: MutableList<Beasiswa> = mutableListOf()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_beasiswa))
         val v = inflater.inflate(R.layout.fragment_beasiswa, container, false)
@@ -57,7 +62,8 @@ class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchV
         adapterBeasiswaInActive = BeasiswaInActiveListAdapter(inActiveBeasiswaList) {
             activity?.startActivity<DetailBeasiwaActivity>("kode" to "${it.id}")
         }
-        rv_list_inactive_beasiswa.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
+        rv_list_inactive_beasiswa.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(activity)
         rv_list_inactive_beasiswa.adapter = adapterBeasiswaInActive
         swiperefresh_beasiswa.onRefresh {
             BeasiswaPresenter.showBeasiswa(this)
@@ -71,7 +77,7 @@ class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchV
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater?.inflate(R.menu.menu_home, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView
         searchView.queryHint = getString(R.string.search_beasiswa)
@@ -89,22 +95,26 @@ class BeasiswaFragment : androidx.fragment.app.Fragment(), BeasiswaView, SearchV
         swiperefresh_beasiswa.isRefreshing = false
     }
 
-    override fun showBeasiswa(data: List<Beasiswa>) {
+    override fun showBeasiswa(data: List<Beasiswa>?) {
         swiperefresh_beasiswa.isRefreshing = false
         beasiswaList.clear()
-        beasiswaList.addAll(data)
+        if (!data.isNullOrEmpty()) {
+            beasiswaList.addAll(data)
+        }
         adapterBeasiswaActive.notifyDataSetChanged()
     }
 
-    override fun showInActiveBeasiswa(data: List<Beasiswa>) {
+    override fun showInActiveBeasiswa(data: List<Beasiswa>?) {
 //        swiperefresh_beasiswa.isRefreshing = false
         inActiveBeasiswaList.clear()
-        inActiveBeasiswaList.addAll(data)
+        if (!data.isNullOrEmpty()) {
+            inActiveBeasiswaList.addAll(data)
+        }
         Collections.reverse(inActiveBeasiswaList)
         adapterBeasiswaInActive.notifyDataSetChanged()
     }
 
-    override fun showError(data: String) {
+    override fun showError(data: String?) {
         Log.d(TAG, data)
         swiperefresh_beasiswa.isRefreshing = false
         btn_refresh_beasiswa.visibility = View.VISIBLE

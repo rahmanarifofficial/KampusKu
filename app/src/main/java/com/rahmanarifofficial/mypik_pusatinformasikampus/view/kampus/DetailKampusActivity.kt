@@ -59,32 +59,42 @@ class DetailKampusActivity : AppCompatActivity(),
         return true
     }
 
-    override fun showPtn(data: List<PTN>) {
-        ptn = PTN(
-            data[0].getKODE(), data[0].getNAMA(), data[0].getLINKPMB(), data[0].getLINKLOGO(), data[0].getAKREDITASI(),
-            data[0].getPROVINSI(), data[0].getWORLDRANK(), data[0].getJUMLAHPRODI(), data[0].getLINKDROP()
-        )
-        collapsing_toolbar_detail_kampus.title = data.get(0).getNAMA()
-        collapsing_toolbar_detail_kampus.setExpandedTitleColor(Color.parseColor("#44ffffff"))
-        tv_akreditasi_detail_ptn.text = data.get(0).getAKREDITASI()
-        tv_rank_detail_ptn.text = data.get(0).getWORLDRANK()
-        tv_web_detail_ptn.text = data.get(0).getLINKPMB()
-        tv_provinsi_detail_ptn.text = data.get(0).getPROVINSI()
-        tv_jumlah_prodi_detail_ptn.text = data.get(0).getJUMLAHPRODI()
-        if (!data.get(0).getLINKDROP().equals("")) {
-            Picasso.get().load(data.get(0).getLINKDROP()).placeholder(R.drawable.ic_university_campus).centerCrop()
-                .fit()
-                .into(iv_foto_detail_ptn)
-        }
-        if (!data.get(0).getLINKPMB().isNullOrEmpty()) {
-            btnWebsite.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data.get(0).getLINKPMB()))
-                startActivity(intent)
+    override fun showPtn(data: List<PTN>?) {
+        if (data != null) {
+            ptn = PTN(
+                data[0].getKODE(),
+                data[0].getNAMA(),
+                data[0].getLINKPMB(),
+                data[0].getLINKLOGO(),
+                data[0].getAKREDITASI(),
+                data[0].getPROVINSI(),
+                data[0].getWORLDRANK(),
+                data[0].getJUMLAHPRODI(),
+                data[0].getLINKDROP()
+            )
+            collapsing_toolbar_detail_kampus.title = data.get(0).getNAMA()
+            collapsing_toolbar_detail_kampus.setExpandedTitleColor(Color.parseColor("#44ffffff"))
+            tv_akreditasi_detail_ptn.text = data.get(0).getAKREDITASI()
+            tv_rank_detail_ptn.text = data.get(0).getWORLDRANK()
+            tv_web_detail_ptn.text = data.get(0).getLINKPMB()
+            tv_provinsi_detail_ptn.text = data.get(0).getPROVINSI()
+            tv_jumlah_prodi_detail_ptn.text = data.get(0).getJUMLAHPRODI()
+            if (!data.get(0).getLINKDROP().equals("")) {
+                Picasso.get().load(data.get(0).getLINKDROP())
+                    .placeholder(R.drawable.ic_university_campus).centerCrop()
+                    .fit()
+                    .into(iv_foto_detail_ptn)
+            }
+            if (!data.get(0).getLINKPMB().isNullOrEmpty()) {
+                btnWebsite.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data.get(0).getLINKPMB()))
+                    startActivity(intent)
+                }
             }
         }
     }
 
-    override fun showError(error: String) {
+    override fun showError(error: String?) {
         Log.d(TAG, error)
         KampusPresenter.getPTN(this, kode)
     }
@@ -124,7 +134,8 @@ class DetailKampusActivity : AppCompatActivity(),
         if (isFavorite)
             menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite)
         else
-            menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, R.drawable.ic_favorite_border)
+            menuItem?.getItem(0)?.icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_favorite_border)
     }
 
     private fun favoriteState() {

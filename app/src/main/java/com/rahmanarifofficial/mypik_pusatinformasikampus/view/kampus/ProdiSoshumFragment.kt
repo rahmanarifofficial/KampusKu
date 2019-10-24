@@ -78,45 +78,49 @@ class ProdiSoshumFragment : androidx.fragment.app.Fragment(),
         list_prodi_ptn.adapter = adapter
     }
 
-    override fun showProdi(data: List<Prodi>) {
+    override fun showProdi(data: List<Prodi>?) {
         prodiList.clear()
-        prodiList.addAll(data)
+        if (data != null) {
+            prodiList.addAll(data)
+        }
         adapter.notifyDataSetChanged()
     }
 
-    override fun showDetailProdi(data: List<Prodi>) {
-        val kuota = data[0].getDayaTampung2019()!!.toDouble()
-        val kuota2018 = data[0].getPeminat2018()!!.toDouble()
-        var persentase = "Prodi Baru"
-        if (kuota2018 != 0.0) {
-            persentase = DecimalFormat("#.##").format(kuota / kuota2018 * 100) + " %"
-        }
+    override fun showDetailProdi(data: List<Prodi>?) {
+        if (data!=null) {
+            val kuota = data[0].getDayaTampung2019()!!.toDouble()
+            val kuota2018 = data[0].getPeminat2018()!!.toDouble()
+            var persentase = "Prodi Baru"
+            if (kuota2018 != 0.0) {
+                persentase = DecimalFormat("#.##").format(kuota / kuota2018 * 100) + " %"
+            }
 
-        var portofolio = data[0].getJenisPortofolio()
-        when (portofolio) {
-            "1" -> portofolio = "Olahraga"
-            "2" -> portofolio = "Seni Rupa Dasar"
-            "3" -> portofolio = "Tari"
-            "4" -> portofolio = "Musik"
-            "5" -> portofolio = "Teater"
-            "6" -> portofolio = "Film/Televisi"
-            "7" -> portofolio = "Fotografi"
-            "8" -> portofolio = "Karawitan"
-            "9" -> portofolio = "Etnomusikalagi"
-        }
+            var portofolio = data[0].getJenisPortofolio()
+            when (portofolio) {
+                "1" -> portofolio = "Olahraga"
+                "2" -> portofolio = "Seni Rupa Dasar"
+                "3" -> portofolio = "Tari"
+                "4" -> portofolio = "Musik"
+                "5" -> portofolio = "Teater"
+                "6" -> portofolio = "Film/Televisi"
+                "7" -> portofolio = "Fotografi"
+                "8" -> portofolio = "Karawitan"
+                "9" -> portofolio = "Etnomusikalagi"
+            }
 
-        tvProdi.text = data[0].getNamaProdi()
-        tvPTN.text = data[0].getNamaUniversitas()
-        tvTipe.text = data[0].getTipe()
-        tvAkreditasi.text = data[0].getAkreditasi()
-        tvKuota.text = data[0].getDayaTampung2019()
-        tvKuota2018.text = data[0].getPeminat2018()
-        tvPortofolio.text = portofolio
-        tvPersentase.text = persentase
+            tvProdi.text = data[0].getNamaProdi()
+            tvPTN.text = data[0].getNamaUniversitas()
+            tvTipe.text = data[0].getTipe()
+            tvAkreditasi.text = data[0].getAkreditasi()
+            tvKuota.text = data[0].getDayaTampung2019()
+            tvKuota2018.text = data[0].getPeminat2018()
+            tvPortofolio.text = portofolio
+            tvPersentase.text = persentase
+        }
     }
 
-    override fun showError(data: String) {
-        Log.d("TAGERROR",data)
+    override fun showError(data: String?) {
+        Log.d("TAGERROR", data)
     }
 
 }

@@ -14,11 +14,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import com.rahmanarifofficial.mypik_pusatinformasikampus.MainActivity
 import com.rahmanarifofficial.mypik_pusatinformasikampus.R
 import com.rahmanarifofficial.mypik_pusatinformasikampus.presenter.AkunPresenter
 import com.rahmanarifofficial.mypik_pusatinformasikampus.util.AuthPreferences
 import kotlinx.android.synthetic.main.fragment_new_profile.*
+import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.toast
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -32,13 +36,31 @@ class NewProfileFragment : androidx.fragment.app.Fragment(), NewProfileView {
     private val GALLERY = 1
     private val CAMERA = 2
 
+    private lateinit var iv_foto_profil_new_akun: ImageView
+    private lateinit var btn_daftar_new_akun: Button
+    private lateinit var et_nama_new_akun: EditText
+    private lateinit var et_telepon_new_akun: EditText
+    private lateinit var et_alamat_new_akun: EditText
+    private lateinit var et_asal_sekolah_new_akun: EditText
+    private lateinit var et_instagram_new_akun: EditText
+    private lateinit var et_facebook_new_akun: EditText
+
     companion object {
         private val IMAGE_DIRECTORY = "/kampusku"
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as MainActivity).setActionBarTitle(getString(R.string.buat_akun))
-        return inflater.inflate(R.layout.fragment_new_profile, container, false)
+        val v = inflater.inflate(R.layout.fragment_new_profile, container, false)
+        iv_foto_profil_new_akun = v.findViewById(R.id.iv_foto_profil_new_akun)
+        btn_daftar_new_akun = v.findViewById(R.id.btn_daftar_new_akun)
+        et_nama_new_akun = v.findViewById(R.id.et_nama_new_akun)
+        et_telepon_new_akun = v.findViewById(R.id.et_telepon_new_akun)
+        et_alamat_new_akun = v.findViewById(R.id.et_alamat_new_akun)
+        et_asal_sekolah_new_akun = v.findViewById(R.id.et_asal_sekolah_new_akun)
+        et_instagram_new_akun = v.findViewById(R.id.et_instagram_new_akun)
+        et_facebook_new_akun = v.findViewById(R.id.et_facebook_new_akun)
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -138,7 +160,7 @@ class NewProfileFragment : androidx.fragment.app.Fragment(), NewProfileView {
                     val bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, foto)
                     val path = saveImage(bitmap)
                     toast("Image Saved")
-                    iv_foto_profil_new_akun!!.setImageBitmap(bitmap)
+                    iv_foto_profil_new_akun.setImageBitmap(bitmap)
                 } catch (e: IOException) {
                     e.printStackTrace()
                     toast("Failed")
@@ -146,10 +168,12 @@ class NewProfileFragment : androidx.fragment.app.Fragment(), NewProfileView {
                 Log.d("TESTGALLERY", foto?.toString())
             }
         } else if (requestCode == CAMERA) {
-            val thumbnail = data!!.extras!!.get("data") as Bitmap
-            iv_foto_profil_new_akun!!.setImageBitmap(thumbnail)
-            saveImage(thumbnail)
-            toast("Image Saved")
+            if (data != null) {
+                val thumbnail = data.extras?.get("data") as Bitmap
+                iv_foto_profil_new_akun.setImageBitmap(thumbnail)
+                saveImage(thumbnail)
+                toast("Image Saved")
+            }
         }
 
     }

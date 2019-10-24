@@ -5,7 +5,7 @@ import com.rahmanarifofficial.mypik_pusatinformasikampus.model.Beasiswa
 interface BeasiswaView {
     fun showLoading()
     fun hideLoading()
-    fun showBeasiswa(data: List<Beasiswa>)
-    fun showInActiveBeasiswa(data: List<Beasiswa>)
-    fun showError(data: String)
+    fun showBeasiswa(data: List<Beasiswa>?)
+    fun showInActiveBeasiswa(data: List<Beasiswa>?)
+    fun showError(data: String?)
 }

@@ -47,7 +47,11 @@ class ProfileFragment : androidx.fragment.app.Fragment(), ProfileView, View.OnCl
     private lateinit var logout_profile: LinearLayout
     private lateinit var btn_refresh_profile: Button
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         (activity as MainActivity).setActionBarTitle(getString(R.string.text_profil))
         val v = inflater.inflate(R.layout.fragment_profile, container, false)
         iv_info_foto_profil_akun = v.findViewById(R.id.iv_info_foto_profil_akun)
@@ -72,18 +76,24 @@ class ProfileFragment : androidx.fragment.app.Fragment(), ProfileView, View.OnCl
 
         auth = FirebaseAuth.getInstance()
 
-        AkunPresenter.getPengguna(this, email, password)
-        info_profile.setOnClickListener(this)
+        showDummyProfil()
+//        AkunPresenter.getPengguna(this, email, password)
+//        info_profile.setOnClickListener(this)
         favorite_profile.setOnClickListener(this)
         about_profile.setOnClickListener(this)
         help_profile.setOnClickListener(this)
-        logout_profile.setOnClickListener(this)
+//        logout_profile.setOnClickListener(this)
 
         btn_refresh_profile.setOnClickListener {
             btn_refresh_profile.visibility = View.GONE
-            AkunPresenter.getPengguna(this, email, password)
+//            AkunPresenter.getPengguna(this, email, password)
         }
 
+    }
+
+    private fun showDummyProfil() {
+        tv_info_nama_akun.text = "Arif Rahman"
+        tv_info_email_akun.text = "rahmanarif710@gmail.com"
     }
 
     override fun showProfil(data: List<Pengguna>) {
